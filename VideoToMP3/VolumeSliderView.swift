@@ -45,8 +45,9 @@ class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDele
         
         // Configure layout
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 50, height: 50)
+        layout.itemSize = CGSize(width: 32, height: 32)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
         collectionView.collectionViewLayout = layout
     }
 
@@ -66,21 +67,5 @@ class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDele
         return cell
     }
     
-    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VolumeSliderCell", for: indexPath) as! VolumeSliderCell
-//        
-//        // Access volume level directly from the array
-//        let volumeLevel = volumeLevels[indexPath.item]
-//        print("Setting volumeLabel text to: \(volumeLevel)")
-//        
-//        cell.volumeLabel.text = "\(volumeLevel)"
-//        print("Creating cell for item at index \(indexPath.item)")
-//        
-//        // Use the config method to set the volume level text on the label
-//                cell.config(volumeLevel: volumeLevel)
-//        
-//        return cell
-//    }
 
 }
