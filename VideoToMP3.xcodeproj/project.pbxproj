@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3189D2FA2CE5D182006131F1 /* VolumeSliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3189D2F92CE5D182006131F1 /* VolumeSliderView.xib */; };
+		3189D2FE2CE5D23D006131F1 /* VolumeSliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3189D2FD2CE5D23D006131F1 /* VolumeSliderCell.xib */; };
+		3189D3022CE5D3D6006131F1 /* VolumeSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189D3012CE5D3D6006131F1 /* VolumeSliderCell.swift */; };
+		3189D3042CE5D4F0006131F1 /* VolumeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189D3032CE5D4F0006131F1 /* VolumeSliderView.swift */; };
 		31CFC9712CE4771D00F74A10 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 31CFC9652CE4771D00F74A10 /* SF-Pro-Text-Heavy.otf */; };
 		31CFC9722CE4771D00F74A10 /* SF-Pro-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 31CFC9662CE4771D00F74A10 /* SF-Pro-Text-MediumItalic.otf */; };
 		31CFC9732CE4771D00F74A10 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 31CFC9672CE4771D00F74A10 /* SF-Pro-Text-Light.otf */; };
@@ -49,6 +53,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3189D2F92CE5D182006131F1 /* VolumeSliderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VolumeSliderView.xib; sourceTree = "<group>"; };
+		3189D2FD2CE5D23D006131F1 /* VolumeSliderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VolumeSliderCell.xib; sourceTree = "<group>"; };
+		3189D3012CE5D3D6006131F1 /* VolumeSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSliderCell.swift; sourceTree = "<group>"; };
+		3189D3032CE5D4F0006131F1 /* VolumeSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSliderView.swift; sourceTree = "<group>"; };
 		31CFC9652CE4771D00F74A10 /* SF-Pro-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Heavy.otf"; sourceTree = "<group>"; };
 		31CFC9662CE4771D00F74A10 /* SF-Pro-Text-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-MediumItalic.otf"; sourceTree = "<group>"; };
 		31CFC9672CE4771D00F74A10 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
@@ -151,6 +159,10 @@
 				31DEBA8C2CE30CDA0067361D /* Assets.xcassets */,
 				31DEBA8E2CE30CDA0067361D /* LaunchScreen.storyboard */,
 				31DEBA912CE30CDA0067361D /* Info.plist */,
+				3189D2F92CE5D182006131F1 /* VolumeSliderView.xib */,
+				3189D3032CE5D4F0006131F1 /* VolumeSliderView.swift */,
+				3189D2FD2CE5D23D006131F1 /* VolumeSliderCell.xib */,
+				3189D3012CE5D3D6006131F1 /* VolumeSliderCell.swift */,
 			);
 			path = VideoToMP3;
 			sourceTree = "<group>";
@@ -282,11 +294,13 @@
 			files = (
 				31CFC9722CE4771D00F74A10 /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				31CFC9772CE4771D00F74A10 /* SF-Pro-Text-RegularItalic.otf in Resources */,
+				3189D2FA2CE5D182006131F1 /* VolumeSliderView.xib in Resources */,
 				31DEBAB62CE31C250067361D /* NOTICE.txt in Resources */,
 				31DEBABB2CE31C250067361D /* Roboto-Italic.ttf in Resources */,
 				31CFC9792CE4771D00F74A10 /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				31CFC97B2CE4771D00F74A10 /* SF-Pro-Text-Medium.otf in Resources */,
 				31DEBABD2CE31C250067361D /* Roboto-Bold.ttf in Resources */,
+				3189D2FE2CE5D23D006131F1 /* VolumeSliderCell.xib in Resources */,
 				31DEBAAE2CE31C250067361D /* Roboto-Medium.ttf in Resources */,
 				31DEBABA2CE31C250067361D /* Roboto-CondensedItalic.ttf in Resources */,
 				31DEBABF2CE31C250067361D /* Roboto-Black.ttf in Resources */,
@@ -326,9 +340,11 @@
 			files = (
 				31DEBA882CE30CD80067361D /* ViewController.swift in Sources */,
 				31DEBAC72CE334E30067361D /* MP3ScreenController.swift in Sources */,
+				3189D3022CE5D3D6006131F1 /* VolumeSliderCell.swift in Sources */,
 				31DEBA992CE317D50067361D /* VideoToMP3Cell.swift in Sources */,
 				31DEBA842CE30CD80067361D /* AppDelegate.swift in Sources */,
 				31DEBA862CE30CD80067361D /* SceneDelegate.swift in Sources */,
+				3189D3042CE5D4F0006131F1 /* VolumeSliderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,10 +2,17 @@ import UIKit
 
 class MP3ScreenController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var playButton: UIButton!
+
+    @IBOutlet weak var convertButton: UIButton!
+    
+    @IBOutlet weak var volumeSliderContainer: UIView!
+    
     @IBOutlet weak var audioSampleRate: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dropdownArrowImageView: UIImageView!
+    
     @IBOutlet weak var dropdownFieldView: UIView!
     @IBOutlet weak var autoLabel: UILabel!
     @IBOutlet weak var audioRateLabel: UILabel!
@@ -26,6 +33,14 @@ class MP3ScreenController: UIViewController, UITableViewDataSource, UITableViewD
                tableView.delegate = self
                tableView.dataSource = self
                tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DropdownCell")
+        
+//        if let volumeSliderView = Bundle.main.loadNibNamed("VolumeSliderView", owner: self, options: nil)?.first as? VolumeSliderView {
+//            self.view.addSubview(volumeSliderView)
+//            volumeSliderView.frame = CGRect(x: 0, y: 100, width: self.view.frame.width, height: 200) // Adjust frame as needed
+//        }
+
+        
+        
                
 //               let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dropdownTapped))
 //        dropdownArrowImageView.addGestureRecognizer(tapGesture)
@@ -36,6 +51,7 @@ class MP3ScreenController: UIViewController, UITableViewDataSource, UITableViewD
            autoLabel.text = "Auto"
            dropdownArrowImageView.image = UIImage(named: "dropdown")
         dropdownArrowImageView1.image = UIImage(named: "dropdown")
+        thumbnailImageView.image = UIImage(named: "475")
 
        }
 
