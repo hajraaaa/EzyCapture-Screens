@@ -71,7 +71,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xKc-LL-goJ">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="1200"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NXQ-cX-2cK">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="475" translatesAutoresizingMaskIntoConstraints="NO" id="NXQ-cX-2cK">
                                                 <rect key="frame" x="14" y="10" width="365" height="230"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="230" id="gus-u4-gxt"/>
@@ -94,24 +94,24 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYg-Go-wjt">
                                                 <rect key="frame" x="14" y="272.66666666666669" width="365" height="55.333333333333314"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="258" translatesAutoresizingMaskIntoConstraints="NO" id="12b-fq-ELs">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="297" translatesAutoresizingMaskIntoConstraints="NO" id="12b-fq-ELs">
                                                         <rect key="frame" x="5" y="0.0" width="355" height="50.333333333333336"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQG-oA-2gl">
-                                                                <rect key="frame" x="0.0" y="17.333333333333314" width="28.666666666666668" height="15.666666666666664"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Auto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQG-oA-2gl">
+                                                                <rect key="frame" x="0.0" y="17.333333333333314" width="45.666666666666664" height="15.666666666666664"/>
                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="36E-mD-iQF">
-                                                                <rect key="frame" x="286.66666666666669" y="0.33333333333331439" width="68.333333333333314" height="50"/>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="36E-mD-iQF">
+                                                                <rect key="frame" x="342.66666666666669" y="21.333333333333314" width="12.333333333333314" height="7.6666666666666679"/>
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imS-HZ-BYe">
                                                         <rect key="frame" x="5" y="0.0" width="355" height="50.333333333333336"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain"/>
                                                         <connections>
                                                             <action selector="dropButton" destination="awP-Lz-NPy" eventType="touchDown" id="xQD-1A-j8h"/>
                                                         </connections>
@@ -128,6 +128,11 @@
                                                     <constraint firstItem="12b-fq-ELs" firstAttribute="leading" secondItem="bYg-Go-wjt" secondAttribute="leading" constant="5" id="ddN-dE-m3r"/>
                                                     <constraint firstAttribute="trailing" secondItem="12b-fq-ELs" secondAttribute="trailing" constant="5" id="ozk-1C-Y7q"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audio Sample Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAS-jc-igH">
                                                 <rect key="frame" x="14" y="335" width="365" height="17"/>
@@ -141,21 +146,21 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="236" translatesAutoresizingMaskIntoConstraints="NO" id="SUK-3k-FdC">
                                                         <rect key="frame" x="5" y="0.0" width="355" height="52"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8000 Hz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tja-8u-KIG">
-                                                                <rect key="frame" x="0.0" y="18.333333333333314" width="60" height="15.666666666666664"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="8000 Hz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tja-8u-KIG">
+                                                                <rect key="frame" x="0.0" y="18.333333333333314" width="106.66666666666667" height="15.666666666666664"/>
                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yIZ-bh-823">
-                                                                <rect key="frame" x="296" y="1" width="59" height="50"/>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="yIZ-bh-823">
+                                                                <rect key="frame" x="342.66666666666669" y="22.333333333333314" width="12.333333333333314" height="7.3333333333333321"/>
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRI-qA-lSV">
                                                         <rect key="frame" x="5" y="0.0" width="355" height="52"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain"/>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
@@ -169,6 +174,11 @@
                                                     <constraint firstAttribute="bottom" secondItem="bRI-qA-lSV" secondAttribute="bottom" constant="5" id="aZF-Qb-2R9"/>
                                                     <constraint firstItem="SUK-3k-FdC" firstAttribute="top" secondItem="Wdd-Mp-gmq" secondAttribute="top" id="w3W-sB-f8N"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adjust Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iK-Ue-SQb">
                                                 <rect key="frame" x="14" y="423" width="365" height="31"/>
@@ -176,7 +186,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eBI-J5-0Kr">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eBI-J5-0Kr" customClass="VolumeSliderView" customModule="VideoToMP3" customModuleProvider="target">
                                                 <rect key="frame" x="14" y="461" width="365" height="62"/>
                                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                             </view>
@@ -259,17 +269,11 @@
                     <navigationItem key="navigationItem" id="mMJ-TV-LZE"/>
                     <size key="freeformSize" width="393" height="1200"/>
                     <connections>
-                        <outlet property="audioRateLabel" destination="gJQ-Tj-Juw" id="owA-6J-IdP"/>
-                        <outlet property="audioSampleRate" destination="YAS-jc-igH" id="8Og-If-wY4"/>
-                        <outlet property="audioSampleValue" destination="tja-8u-KIG" id="6m1-w9-YXS"/>
-                        <outlet property="autoLabel" destination="xQG-oA-2gl" id="KfH-dZ-P6n"/>
-                        <outlet property="convertButton" destination="m4Y-Fu-63S" id="oV4-sG-XUE"/>
-                        <outlet property="dropdownArrowImageView" destination="36E-mD-iQF" id="FMx-Vn-qlY"/>
-                        <outlet property="dropdownArrowImageView1" destination="yIZ-bh-823" id="WMU-MY-tNo"/>
-                        <outlet property="playButton" destination="b4u-GC-csh" id="5C3-1w-GoO"/>
-                        <outlet property="tableView" destination="x2M-ze-Yjz" id="CEP-TZ-E9s"/>
-                        <outlet property="thumbnailImageView" destination="NXQ-cX-2cK" id="fEr-W2-DL1"/>
-                        <outlet property="volumeSliderContainer" destination="m4Y-Fu-63S" id="jO5-BL-IUB"/>
+                        <outlet property="audioRateLabel" destination="tja-8u-KIG" id="r5i-a2-fQw"/>
+                        <outlet property="audioSampleValue" destination="YAS-jc-igH" id="iif-zA-ldg"/>
+                        <outlet property="autoLabel" destination="xQG-oA-2gl" id="eZU-1Y-Jn4"/>
+                        <outlet property="playButton" destination="b4u-GC-csh" id="3HZ-QX-vYf"/>
+                        <outlet property="tableView" destination="x2M-ze-Yjz" id="qfq-TK-qTn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGV-Kl-HAh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -296,8 +300,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="475" width="347" height="228"/>
         <image name="Group 29" width="68" height="68"/>
         <image name="Group 85046" width="119" height="47"/>
+        <image name="dropdown" width="12.5" height="7.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

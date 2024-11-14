@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VolumeSliderView" customModule="VideoToMP3" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="sJ0-8d-n1H" id="Jr1-QQ-8ns"/>
+                <outlet property="collectionView" destination="sJ0-8d-n1H" id="y15-Ik-wpe"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
