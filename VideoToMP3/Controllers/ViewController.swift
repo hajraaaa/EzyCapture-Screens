@@ -14,12 +14,8 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 3
+            return 1
         }
-
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 50
-//    }
     
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "VideoToMP3Cell", for: indexPath) as? VideoToMP3Cell else {

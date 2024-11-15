@@ -36,27 +36,27 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ARh-mm-R7h">
-                                <rect key="frame" x="36" y="10" width="303" height="36"/>
+                                <rect key="frame" x="36" y="10" width="298" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Video to MP3 Tool" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMC-eM-UZ9">
-                                        <rect key="frame" x="0.0" y="0.0" width="303" height="17.666666666666668"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="298" height="17.666666666666668"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                                         <color key="textColor" name="title"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Convert videos to mp3 format" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VoU-jZ-hf6">
-                                        <rect key="frame" x="0.0" y="22.666666666666664" width="303" height="13.333333333333336"/>
+                                        <rect key="frame" x="0.0" y="22.666666666666664" width="298" height="13.333333333333336"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                         <color key="textColor" name="bottomText"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="5vX-IE-GLb">
-                                <rect key="frame" x="349" y="25" width="5" height="6"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="5vX-IE-GLb">
+                                <rect key="frame" x="344" y="23" width="10" height="10"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="6" id="jMi-oi-Ybk"/>
-                                    <constraint firstAttribute="width" constant="5" id="v3O-bM-7tV"/>
+                                    <constraint firstAttribute="height" constant="10" id="jMi-oi-Ybk"/>
+                                    <constraint firstAttribute="width" constant="10" id="v3O-bM-7tV"/>
                                 </constraints>
                             </imageView>
                         </subviews>

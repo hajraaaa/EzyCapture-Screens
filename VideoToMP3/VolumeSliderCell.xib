@@ -3,8 +3,8 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -20,19 +20,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4W5-5e-ftz">
-                    <rect key="frame" x="0.0" y="59" width="342" height="51"/>
+                    <rect key="frame" x="0.0" y="0.0" width="342" height="144"/>
                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" name="sliderValue"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemGray2Color"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="4W5-5e-ftz" secondAttribute="bottom" id="47Z-Vj-JQl"/>
+                <constraint firstAttribute="bottom" secondItem="4W5-5e-ftz" secondAttribute="bottom" id="47Z-Vj-JQl"/>
                 <constraint firstItem="4W5-5e-ftz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Kaf-WS-lC2"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4W5-5e-ftz" secondAttribute="trailing" id="OmB-iF-X6i"/>
-                <constraint firstItem="4W5-5e-ftz" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="thr-5F-cvs"/>
+                <constraint firstItem="4W5-5e-ftz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="thr-5F-cvs"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -42,8 +42,8 @@
         </view>
     </objects>
     <resources>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="sliderValue">
+            <color red="0.24313725490196078" green="0.29019607843137257" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

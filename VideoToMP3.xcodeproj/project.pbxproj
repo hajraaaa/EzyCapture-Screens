@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		316476472CE72C2C00A62112 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316476462CE72C2C00A62112 /* Colors.swift */; };
+		316476492CE72C6500A62112 /* UIView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316476482CE72C6500A62112 /* UIView+Gradient.swift */; };
+		3164764B2CE7784C00A62112 /* DropdownOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3164764A2CE7784C00A62112 /* DropdownOptions.swift */; };
 		3189D2FA2CE5D182006131F1 /* VolumeSliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3189D2F92CE5D182006131F1 /* VolumeSliderView.xib */; };
 		3189D2FE2CE5D23D006131F1 /* VolumeSliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3189D2FD2CE5D23D006131F1 /* VolumeSliderCell.xib */; };
 		3189D3022CE5D3D6006131F1 /* VolumeSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189D3012CE5D3D6006131F1 /* VolumeSliderCell.swift */; };
@@ -53,6 +56,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		316476462CE72C2C00A62112 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		316476482CE72C6500A62112 /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
+		3164764A2CE7784C00A62112 /* DropdownOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownOptions.swift; sourceTree = "<group>"; };
 		3189D2F92CE5D182006131F1 /* VolumeSliderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VolumeSliderView.xib; sourceTree = "<group>"; };
 		3189D2FD2CE5D23D006131F1 /* VolumeSliderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VolumeSliderCell.xib; sourceTree = "<group>"; };
 		3189D3012CE5D3D6006131F1 /* VolumeSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSliderCell.swift; sourceTree = "<group>"; };
@@ -111,6 +117,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		316476452CE72B9700A62112 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				316476462CE72C2C00A62112 /* Colors.swift */,
+				316476482CE72C6500A62112 /* UIView+Gradient.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		31CFC9642CE4771D00F74A10 /* SF-Pro-Text-Font-Family */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +164,7 @@
 		31DEBA822CE30CD80067361D /* VideoToMP3 */ = {
 			isa = PBXGroup;
 			children = (
+				316476452CE72B9700A62112 /* Extension */,
 				31DEBAC52CE332750067361D /* Fonts */,
 				31DEBAC32CE332460067361D /* Models */,
 				31DEBAC22CE332310067361D /* Controllers */,
@@ -212,6 +228,7 @@
 		31DEBAC32CE332460067361D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3164764A2CE7784C00A62112 /* DropdownOptions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -339,10 +356,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				31DEBA882CE30CD80067361D /* ViewController.swift in Sources */,
+				316476492CE72C6500A62112 /* UIView+Gradient.swift in Sources */,
+				316476472CE72C2C00A62112 /* Colors.swift in Sources */,
 				31DEBAC72CE334E30067361D /* MP3ScreenController.swift in Sources */,
 				3189D3022CE5D3D6006131F1 /* VolumeSliderCell.swift in Sources */,
 				31DEBA992CE317D50067361D /* VideoToMP3Cell.swift in Sources */,
 				31DEBA842CE30CD80067361D /* AppDelegate.swift in Sources */,
+				3164764B2CE7784C00A62112 /* DropdownOptions.swift in Sources */,
 				31DEBA862CE30CD80067361D /* SceneDelegate.swift in Sources */,
 				3189D3042CE5D4F0006131F1 /* VolumeSliderView.swift in Sources */,
 			);
@@ -499,6 +519,7 @@
 				DEVELOPMENT_TEAM = YBC6QZE5G7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VideoToMP3/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = testing;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -527,6 +548,7 @@
 				DEVELOPMENT_TEAM = YBC6QZE5G7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VideoToMP3/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = testing;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
