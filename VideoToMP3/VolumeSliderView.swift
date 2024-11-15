@@ -2,9 +2,11 @@ import UIKit
 
 class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var lineView: UIView!
+    
     let volumeLevels = Array(stride(from: 0, through: 100, by: 10))
-
-    // Initialize the view
+    var selectedIndex: IndexPath?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         nibSetup()
@@ -15,7 +17,6 @@ class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDele
         nibSetup()
     }
 
-    // Setup the view from nib
     private func nibSetup() {
         let view = loadViewFromNib()
         view.frame = bounds
@@ -24,10 +25,8 @@ class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDele
         
         setupCollectionView()
         collectionView.reloadData()
-        
     }
 
-    // Load the view from nib file
     private func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
@@ -36,14 +35,11 @@ class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDele
     }
     
     private func setupCollectionView() {
-        // Register cell for collection view
         collectionView.register(UINib(nibName: "VolumeSliderCell", bundle: nil), forCellWithReuseIdentifier: "VolumeSliderCell")
         
-        // Set delegate and data source
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        // Configure layout
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 32, height: 32)
         layout.minimumLineSpacing = 0
@@ -59,13 +55,71 @@ class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VolumeSliderCell", for: indexPath) as! VolumeSliderCell
         
-//        cell.volumeLabel.text = "\(volumeLevels[indexPath.item])"
+        // Configure the cell
+        cell.config(volumeLevel: volumeLevels[indexPath.item])
         
-        // Use the config method to set the volume label text
-           cell.config(volumeLevel: volumeLevels[indexPath.item])
-        print("Creating cell for item at index \(indexPath.item)")
+        // Set the selection state based on the selected index
+        cell.isSelected = (indexPath == selectedIndex)
+        
         return cell
     }
-    
 
+    // MARK: - UICollectionViewDelegate Methods
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Only update if the selected item is different
+        if selectedIndex != indexPath {
+            // Update the selected index
+            selectedIndex = indexPath
+            
+            // Update the line view position to cover all previous items without reloading cells
+            updateLineViewPosition(for: indexPath)
+        }
+    }
+
+//    // MARK: - Line View Positioning
+//    private func updateLineViewPosition(for indexPath: IndexPath) {
+//        // Get the selected cell
+//        if let cell = collectionView.cellForItem(at: indexPath) {
+//            // Convert the selected cell's frame to the view's coordinate system
+//            let cellFrame = collectionView.convert(cell.frame, to: self)
+//            
+//            // Calculate the cumulative width up to the selected index
+//            let selectedItemWidth = cellFrame.origin.x + cellFrame.size.width
+//            let lineWidth = selectedItemWidth // Line should cover up to this point
+//            
+//            // Animate the line view position change
+//            UIView.animate(withDuration: 0.3, animations: {
+//                // Set the line's origin and width based on the selected cell and previous items
+//                self.lineView.frame.origin.x = 0 // Line should start from 0 (beginning)
+//                self.lineView.frame.size.width = lineWidth // Set line width to the selected cell's width
+//            })
+//        }
+//    }
+    // MARK: - Line View Positioning
+    private func updateLineViewPosition(for indexPath: IndexPath) {
+        self.lineView.frame.size.height = 5
+        // Get the selected cell
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            // Convert the selected cell's frame to the view's coordinate system
+            let cellFrame = collectionView.convert(cell.frame, to: self)
+            
+            // Calculate the cumulative width up to the selected index
+            let selectedItemWidth = cellFrame.origin.x + cellFrame.size.width / 2
+            let lineWidth = selectedItemWidth // Line should cover up to this point
+            
+            // Animate the line view position change
+            UIView.animate(withDuration: 0.3, animations: {
+                // Set the line's origin and width based on the selected cell and previous items
+                self.lineView.frame.origin.x = 0 // Line should start from 0 (beginning)
+                self.lineView.frame.size.width = lineWidth // Set line width to the selected cell's width
+
+                // Apply the gradient to the line view on selection
+                self.lineView.addLinearGradient(
+                    colors: [UIColor.gradientColor1, UIColor.gradientColor2], // Use the gradient colors
+                    startPoint: CGPoint(x: 0, y: 0), // Start point of the gradient (left)
+                    endPoint: CGPoint(x: 1, y: 0)    // End point of the gradient (right)
+                )
+            })
+        }
+    }
 }
