@@ -299,7 +299,7 @@
                         <outlet property="playButton" destination="b4u-GC-csh" id="3HZ-QX-vYf"/>
                         <outlet property="tableView" destination="x2M-ze-Yjz" id="qfq-TK-qTn"/>
                         <outlet property="tableviewTop" destination="srT-yz-oRb" id="ehv-lf-ook"/>
-                        <outlet property="videoPlayerView" destination="NXQ-cX-2cK" id="tnu-Hn-oWl"/>
+                        <outlet property="videoPlayerView" destination="h5x-aY-FNp" id="beR-77-zdH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGV-Kl-HAh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
