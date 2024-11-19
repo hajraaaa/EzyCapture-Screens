@@ -140,6 +140,33 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		31A7CDB52CECA0D5003B8868 /* VideoToMP3Cell */ = {
+			isa = PBXGroup;
+			children = (
+				31DEBA982CE317D50067361D /* VideoToMP3Cell.xib */,
+				31DEBA972CE317D50067361D /* VideoToMP3Cell.swift */,
+			);
+			path = VideoToMP3Cell;
+			sourceTree = "<group>";
+		};
+		31A7CDB62CECA0F4003B8868 /* VolumeSliderCell */ = {
+			isa = PBXGroup;
+			children = (
+				3189D2FD2CE5D23D006131F1 /* VolumeSliderCell.xib */,
+				3189D3012CE5D3D6006131F1 /* VolumeSliderCell.swift */,
+			);
+			path = VolumeSliderCell;
+			sourceTree = "<group>";
+		};
+		31A7CDB72CECA126003B8868 /* VolumeSliderView */ = {
+			isa = PBXGroup;
+			children = (
+				3189D2F92CE5D182006131F1 /* VolumeSliderView.xib */,
+				3189D3032CE5D4F0006131F1 /* VolumeSliderView.swift */,
+			);
+			path = VolumeSliderView;
+			sourceTree = "<group>";
+		};
 		31CFC9642CE4771D00F74A10 /* SF-Pro-Text-Font-Family */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,10 +218,6 @@
 				31DEBA8C2CE30CDA0067361D /* Assets.xcassets */,
 				31DEBA8E2CE30CDA0067361D /* LaunchScreen.storyboard */,
 				31DEBA912CE30CDA0067361D /* Info.plist */,
-				3189D2F92CE5D182006131F1 /* VolumeSliderView.xib */,
-				3189D3032CE5D4F0006131F1 /* VolumeSliderView.swift */,
-				3189D2FD2CE5D23D006131F1 /* VolumeSliderCell.xib */,
-				3189D3012CE5D3D6006131F1 /* VolumeSliderCell.swift */,
 			);
 			path = VideoToMP3;
 			sourceTree = "<group>";
@@ -227,6 +250,7 @@
 		31DEBAC12CE332290067361D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				31A7CDB72CECA126003B8868 /* VolumeSliderView */,
 				31DEBAC42CE332630067361D /* Cells */,
 			);
 			path = Views;
@@ -252,8 +276,8 @@
 		31DEBAC42CE332630067361D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				31DEBA982CE317D50067361D /* VideoToMP3Cell.xib */,
-				31DEBA972CE317D50067361D /* VideoToMP3Cell.swift */,
+				31A7CDB62CECA0F4003B8868 /* VolumeSliderCell */,
+				31A7CDB52CECA0D5003B8868 /* VideoToMP3Cell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
