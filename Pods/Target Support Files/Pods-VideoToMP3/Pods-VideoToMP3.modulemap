@@ -1,0 +1,6 @@
+framework module Pods_VideoToMP3 {
+  umbrella header "Pods-VideoToMP3-umbrella.h"
+
+  export *
+  module * { export * }
+}

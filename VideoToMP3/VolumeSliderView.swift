@@ -76,25 +76,7 @@ class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDele
         }
     }
 
-//    // MARK: - Line View Positioning
-//    private func updateLineViewPosition(for indexPath: IndexPath) {
-//        // Get the selected cell
-//        if let cell = collectionView.cellForItem(at: indexPath) {
-//            // Convert the selected cell's frame to the view's coordinate system
-//            let cellFrame = collectionView.convert(cell.frame, to: self)
-//            
-//            // Calculate the cumulative width up to the selected index
-//            let selectedItemWidth = cellFrame.origin.x + cellFrame.size.width
-//            let lineWidth = selectedItemWidth // Line should cover up to this point
-//            
-//            // Animate the line view position change
-//            UIView.animate(withDuration: 0.3, animations: {
-//                // Set the line's origin and width based on the selected cell and previous items
-//                self.lineView.frame.origin.x = 0 // Line should start from 0 (beginning)
-//                self.lineView.frame.size.width = lineWidth // Set line width to the selected cell's width
-//            })
-//        }
-//    }
+
     // MARK: - Line View Positioning
     private func updateLineViewPosition(for indexPath: IndexPath) {
         self.lineView.frame.size.height = 5
@@ -105,19 +87,19 @@ class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDele
             
             // Calculate the cumulative width up to the selected index
             let selectedItemWidth = cellFrame.origin.x + cellFrame.size.width / 2
-            let lineWidth = selectedItemWidth // Line should cover up to this point
+            let lineWidth = selectedItemWidth 
             
             // Animate the line view position change
             UIView.animate(withDuration: 0.3, animations: {
                 // Set the line's origin and width based on the selected cell and previous items
-                self.lineView.frame.origin.x = 0 // Line should start from 0 (beginning)
-                self.lineView.frame.size.width = lineWidth // Set line width to the selected cell's width
+                self.lineView.frame.origin.x = 0
+                self.lineView.frame.size.width = lineWidth
 
                 // Apply the gradient to the line view on selection
                 self.lineView.addLinearGradient(
-                    colors: [UIColor.gradientColor1, UIColor.gradientColor2], // Use the gradient colors
-                    startPoint: CGPoint(x: 0, y: 0), // Start point of the gradient (left)
-                    endPoint: CGPoint(x: 1, y: 0)    // End point of the gradient (right)
+                    colors: [UIColor.gradientColor1, UIColor.gradientColor2],
+                    startPoint: CGPoint(x: 0, y: 0),
+                    endPoint: CGPoint(x: 1, y: 0)
                 )
             })
         }
