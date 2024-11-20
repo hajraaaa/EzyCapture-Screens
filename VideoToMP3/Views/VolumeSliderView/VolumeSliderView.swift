@@ -55,10 +55,8 @@ class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VolumeSliderCell", for: indexPath) as! VolumeSliderCell
         
-        // Configure the cell
         cell.config(volumeLevel: volumeLevels[indexPath.item])
         
-        // Set the selection state based on the selected index
         cell.isSelected = (indexPath == selectedIndex)
         
         return cell
@@ -66,12 +64,8 @@ class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDele
 
     // MARK: - UICollectionViewDelegate Methods
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // Only update if the selected item is different
         if selectedIndex != indexPath {
-            // Update the selected index
             selectedIndex = indexPath
-            
-            // Update the line view position to cover all previous items without reloading cells
             updateLineViewPosition(for: indexPath)
         }
     }
@@ -80,22 +74,16 @@ class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDele
     // MARK: - Line View Positioning
     private func updateLineViewPosition(for indexPath: IndexPath) {
         self.lineView.frame.size.height = 5
-        // Get the selected cell
         if let cell = collectionView.cellForItem(at: indexPath) {
-            // Convert the selected cell's frame to the view's coordinate system
             let cellFrame = collectionView.convert(cell.frame, to: self)
             
-            // Calculate the cumulative width up to the selected index
             let selectedItemWidth = cellFrame.origin.x + cellFrame.size.width / 2
             let lineWidth = selectedItemWidth 
             
-            // Animate the line view position change
             UIView.animate(withDuration: 0.3, animations: {
-                // Set the line's origin and width based on the selected cell and previous items
                 self.lineView.frame.origin.x = 0
                 self.lineView.frame.size.width = lineWidth
 
-                // Apply the gradient to the line view on selection
                 self.lineView.addLinearGradient(
                     colors: [UIColor.gradientColor1, UIColor.gradientColor2],
                     startPoint: CGPoint(x: 0, y: 0),
