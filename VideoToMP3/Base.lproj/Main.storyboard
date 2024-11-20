@@ -25,7 +25,7 @@
                                 <rect key="frame" x="18" y="103" width="357" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VideoToMP3Cell" rowHeight="100" id="nYp-Yh-CNd">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VideoToMP3Cell" rowHeight="100" id="nYp-Yh-CNd">
                                         <rect key="frame" x="0.0" y="50" width="357" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nYp-Yh-CNd" id="3xk-vc-JxG">
@@ -60,7 +60,7 @@
         <!--Screen Controller-->
         <scene sceneID="is7-m3-hlU">
             <objects>
-                <viewController id="awP-Lz-NPy" customClass="MP3ScreenController" customModule="VideoToMP3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MP3ScreenController" id="awP-Lz-NPy" customClass="MP3ScreenController" customModule="VideoToMP3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h7c-QH-cal">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,7 +120,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain"/>
                                                         <connections>
-                                                            <action selector="dropButton" destination="awP-Lz-NPy" eventType="touchDown" id="xQD-1A-j8h"/>
+                                                            <action selector="dropButtonTapped" destination="awP-Lz-NPy" eventType="touchUpInside" id="4Ee-3n-S7h"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -170,7 +170,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain"/>
                                                         <connections>
-                                                            <action selector="dropButton1" destination="awP-Lz-NPy" eventType="touchUpInside" id="eOP-te-Knr"/>
+                                                            <action selector="dropButton1Tapped" destination="awP-Lz-NPy" eventType="touchUpInside" id="lR3-fh-VC1"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -212,7 +212,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="Group 85046"/>
                                                 <connections>
-                                                    <action selector="convertButtonTapped:" destination="awP-Lz-NPy" eventType="touchUpInside" id="yGX-Ia-KDf"/>
+                                                    <action selector="convertButtonTapped:" destination="awP-Lz-NPy" eventType="touchUpInside" id="9TQ-Uu-7Pu"/>
                                                 </connections>
                                             </button>
                                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="x2M-ze-Yjz">
@@ -290,16 +290,16 @@
                     <navigationItem key="navigationItem" id="mMJ-TV-LZE"/>
                     <size key="freeformSize" width="393" height="1200"/>
                     <connections>
-                        <outlet property="audioRateLabel" destination="tja-8u-KIG" id="r5i-a2-fQw"/>
-                        <outlet property="audioSampleValue" destination="YAS-jc-igH" id="iif-zA-ldg"/>
-                        <outlet property="autoLabel" destination="xQG-oA-2gl" id="eZU-1Y-Jn4"/>
+                        <outlet property="audioRateLabel" destination="tja-8u-KIG" id="iTn-Jf-geV"/>
+                        <outlet property="autoLabel" destination="xQG-oA-2gl" id="Dbv-ZC-WIB"/>
                         <outlet property="borderedView" destination="bYg-Go-wjt" id="bUe-qA-yHk"/>
-                        <outlet property="borderedView2" destination="Wdd-Mp-gmq" id="1IT-mn-rAi"/>
-                        <outlet property="imageView" destination="NXQ-cX-2cK" id="sb1-uC-4Oi"/>
+                        <outlet property="borderedView2" destination="Wdd-Mp-gmq" id="giL-ab-TZS"/>
+                        <outlet property="imageView" destination="NXQ-cX-2cK" id="B0p-SN-d8I"/>
                         <outlet property="playButton" destination="b4u-GC-csh" id="3HZ-QX-vYf"/>
                         <outlet property="tableView" destination="x2M-ze-Yjz" id="qfq-TK-qTn"/>
                         <outlet property="tableviewTop" destination="srT-yz-oRb" id="ehv-lf-ook"/>
                         <outlet property="videoPlayerView" destination="h5x-aY-FNp" id="beR-77-zdH"/>
+                        <outlet property="volumeSliderView" destination="eBI-J5-0Kr" id="5eQ-if-JR8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGV-Kl-HAh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
