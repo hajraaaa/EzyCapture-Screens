@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -205,7 +206,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4Y-Fu-63S">
-                                                <rect key="frame" x="30" y="580" width="333" height="66"/>
+                                                <rect key="frame" x="30" y="560" width="333" height="94"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" button="YES" image="YES"/>
                                                 </accessibility>
@@ -222,12 +223,17 @@
                                                     <constraint firstAttribute="height" constant="120" id="2nz-LS-Fa1"/>
                                                 </constraints>
                                             </tableView>
+                                            <activityIndicatorView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="2Ka-Sb-YX2">
+                                                <rect key="frame" x="179" y="525" width="37" height="40"/>
+                                                <color key="color" name="bottomText"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="m4Y-Fu-63S" firstAttribute="top" secondItem="eBI-J5-0Kr" secondAttribute="bottom" constant="60" id="0vd-q4-AM3"/>
+                                            <constraint firstItem="m4Y-Fu-63S" firstAttribute="top" secondItem="eBI-J5-0Kr" secondAttribute="bottom" constant="40" id="0vd-q4-AM3"/>
                                             <constraint firstItem="m4Y-Fu-63S" firstAttribute="leading" secondItem="xKc-LL-goJ" secondAttribute="leading" constant="30" id="0ye-h6-TgM"/>
                                             <constraint firstAttribute="trailing" secondItem="NXQ-cX-2cK" secondAttribute="trailing" constant="14" id="1Xd-GW-Ogb"/>
+                                            <constraint firstAttribute="trailing" secondItem="2Ka-Sb-YX2" secondAttribute="trailing" constant="177" id="2jn-vZ-k7a"/>
                                             <constraint firstItem="h5x-aY-FNp" firstAttribute="leading" secondItem="NXQ-cX-2cK" secondAttribute="leading" id="2kG-24-M5f"/>
                                             <constraint firstItem="NXQ-cX-2cK" firstAttribute="top" secondItem="xKc-LL-goJ" secondAttribute="top" constant="10" id="34i-Ks-PVz"/>
                                             <constraint firstAttribute="trailing" secondItem="b4u-GC-csh" secondAttribute="trailing" constant="150" id="5XQ-n4-HNG"/>
@@ -252,11 +258,14 @@
                                             <constraint firstAttribute="trailing" secondItem="m4Y-Fu-63S" secondAttribute="trailing" constant="30" id="XHX-az-Sw0"/>
                                             <constraint firstItem="bYg-Go-wjt" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="YAS-jc-igH" secondAttribute="top" constant="11" id="aOy-5q-TT2"/>
                                             <constraint firstItem="b4u-GC-csh" firstAttribute="centerX" secondItem="xKc-LL-goJ" secondAttribute="centerX" id="dbo-i4-j2G"/>
+                                            <constraint firstItem="2Ka-Sb-YX2" firstAttribute="top" secondItem="eBI-J5-0Kr" secondAttribute="bottom" constant="5" id="dpo-6G-FkV"/>
                                             <constraint firstAttribute="trailing" secondItem="YAS-jc-igH" secondAttribute="trailing" constant="14" id="fLe-eX-gDa"/>
+                                            <constraint firstAttribute="bottom" secondItem="2Ka-Sb-YX2" secondAttribute="bottom" constant="635" id="fkl-GT-zDR"/>
                                             <constraint firstItem="bYg-Go-wjt" firstAttribute="leading" secondItem="xKc-LL-goJ" secondAttribute="leading" constant="14" id="hhw-gl-TC2"/>
                                             <constraint firstItem="Wdd-Mp-gmq" firstAttribute="top" secondItem="YAS-jc-igH" secondAttribute="bottom" constant="7" id="iiT-fj-241"/>
+                                            <constraint firstItem="2Ka-Sb-YX2" firstAttribute="leading" secondItem="xKc-LL-goJ" secondAttribute="leading" constant="179" id="jul-ox-Yyb"/>
                                             <constraint firstAttribute="trailing" secondItem="Wdd-Mp-gmq" secondAttribute="trailing" constant="14" id="mrR-do-SRq"/>
-                                            <constraint firstAttribute="bottom" secondItem="m4Y-Fu-63S" secondAttribute="bottom" constant="554" id="qCt-xO-AkH"/>
+                                            <constraint firstAttribute="bottom" secondItem="m4Y-Fu-63S" secondAttribute="bottom" constant="546" id="qCt-xO-AkH"/>
                                             <constraint firstAttribute="bottom" secondItem="Wdd-Mp-gmq" secondAttribute="bottom" constant="770" id="rAA-ub-zLW"/>
                                             <constraint firstItem="9iK-Ue-SQb" firstAttribute="leading" secondItem="xKc-LL-goJ" secondAttribute="leading" constant="14" id="sTX-HS-Gl1"/>
                                             <constraint firstItem="x2M-ze-Yjz" firstAttribute="top" secondItem="bYg-Go-wjt" secondAttribute="bottom" id="srT-yz-oRb"/>
@@ -290,6 +299,7 @@
                     <navigationItem key="navigationItem" id="mMJ-TV-LZE"/>
                     <size key="freeformSize" width="393" height="1200"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="2Ka-Sb-YX2" id="V35-71-sJD"/>
                         <outlet property="audioRateLabel" destination="tja-8u-KIG" id="iTn-Jf-geV"/>
                         <outlet property="autoLabel" destination="xQG-oA-2gl" id="Dbv-ZC-WIB"/>
                         <outlet property="borderedView" destination="bYg-Go-wjt" id="bUe-qA-yHk"/>
@@ -330,6 +340,9 @@
         <image name="Group 29" width="68" height="68"/>
         <image name="Group 85046" width="119" height="47"/>
         <image name="dropdown" width="12.5" height="7.5"/>
+        <namedColor name="bottomText">
+            <color red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
