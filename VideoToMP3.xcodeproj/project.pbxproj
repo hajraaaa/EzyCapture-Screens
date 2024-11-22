@@ -53,6 +53,8 @@
 		31DEBABE2CE31C250067361D /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31DEBAAC2CE31C250067361D /* Roboto-Thin.ttf */; };
 		31DEBABF2CE31C250067361D /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31DEBAAD2CE31C250067361D /* Roboto-Black.ttf */; };
 		31DEBAC72CE334E30067361D /* MP3ScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DEBAC62CE334E30067361D /* MP3ScreenController.swift */; };
+		31E7B29B2CEF448F0024AE31 /* VideoAudioRemoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E7B2992CEF448F0024AE31 /* VideoAudioRemoverController.swift */; };
+		31E7B29C2CEF448F0024AE31 /* VideoAudioRemoverController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31E7B29A2CEF448F0024AE31 /* VideoAudioRemoverController.xib */; };
 		5BE404B7367C0D6761B58CFB /* Pods_VideoToMP3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8E452C81A91F7EB360C6DC /* Pods_VideoToMP3.framework */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +108,8 @@
 		31DEBAAC2CE31C250067361D /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		31DEBAAD2CE31C250067361D /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		31DEBAC62CE334E30067361D /* MP3ScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP3ScreenController.swift; sourceTree = "<group>"; };
+		31E7B2992CEF448F0024AE31 /* VideoAudioRemoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoAudioRemoverController.swift; sourceTree = "<group>"; };
+		31E7B29A2CEF448F0024AE31 /* VideoAudioRemoverController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoAudioRemoverController.xib; sourceTree = "<group>"; };
 		CE8E452C81A91F7EB360C6DC /* Pods_VideoToMP3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoToMP3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA6372A6A895789AD722E24E /* Pods-VideoToMP3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoToMP3.debug.xcconfig"; path = "Target Support Files/Pods-VideoToMP3/Pods-VideoToMP3.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -218,6 +222,8 @@
 				31DEBA8C2CE30CDA0067361D /* Assets.xcassets */,
 				31DEBA8E2CE30CDA0067361D /* LaunchScreen.storyboard */,
 				31DEBA912CE30CDA0067361D /* Info.plist */,
+				31E7B2992CEF448F0024AE31 /* VideoAudioRemoverController.swift */,
+				31E7B29A2CEF448F0024AE31 /* VideoAudioRemoverController.xib */,
 			);
 			path = VideoToMP3;
 			sourceTree = "<group>";
@@ -382,6 +388,7 @@
 				31DEBAB12CE31C250067361D /* Roboto-MediumItalic.ttf in Resources */,
 				31CFC9732CE4771D00F74A10 /* SF-Pro-Text-Light.otf in Resources */,
 				31DEBA9A2CE317D50067361D /* VideoToMP3Cell.xib in Resources */,
+				31E7B29C2CEF448F0024AE31 /* VideoAudioRemoverController.xib in Resources */,
 				31DEBA8D2CE30CDA0067361D /* Assets.xcassets in Resources */,
 				31CFC9752CE4771D00F74A10 /* SF-Pro-Text-Bold.otf in Resources */,
 				31DEBABE2CE31C250067361D /* Roboto-Thin.ttf in Resources */,
@@ -455,6 +462,7 @@
 				31DEBA992CE317D50067361D /* VideoToMP3Cell.swift in Sources */,
 				31DEBA842CE30CD80067361D /* AppDelegate.swift in Sources */,
 				3164764B2CE7784C00A62112 /* DropdownOptions.swift in Sources */,
+				31E7B29B2CEF448F0024AE31 /* VideoAudioRemoverController.swift in Sources */,
 				31DEBA862CE30CD80067361D /* SceneDelegate.swift in Sources */,
 				3189D3042CE5D4F0006131F1 /* VolumeSliderView.swift in Sources */,
 			);
