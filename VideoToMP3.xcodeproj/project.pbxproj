@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		315E137A2CF065D100137500 /* VideoToBoomerangController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E13782CF065D100137500 /* VideoToBoomerangController.swift */; };
+		315E137B2CF065D100137500 /* VideoToBoomerangController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 315E13792CF065D100137500 /* VideoToBoomerangController.xib */; };
 		316476472CE72C2C00A62112 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316476462CE72C2C00A62112 /* Colors.swift */; };
 		316476492CE72C6500A62112 /* UIView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316476482CE72C6500A62112 /* UIView+Gradient.swift */; };
 		3164764B2CE7784C00A62112 /* DropdownOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3164764A2CE7784C00A62112 /* DropdownOptions.swift */; };
@@ -59,6 +61,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		315E13782CF065D100137500 /* VideoToBoomerangController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoToBoomerangController.swift; sourceTree = "<group>"; };
+		315E13792CF065D100137500 /* VideoToBoomerangController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoToBoomerangController.xib; sourceTree = "<group>"; };
 		316476462CE72C2C00A62112 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		316476482CE72C6500A62112 /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
 		3164764A2CE7784C00A62112 /* DropdownOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownOptions.swift; sourceTree = "<group>"; };
@@ -133,6 +137,40 @@
 				31D85320704BA0C66F01078D /* Pods-VideoToMP3.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		315E137C2CF06C8B00137500 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				31DEBA872CE30CD80067361D /* ViewController.swift */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		315E137D2CF06CAF00137500 /* MP3ScreenController */ = {
+			isa = PBXGroup;
+			children = (
+				31DEBAC62CE334E30067361D /* MP3ScreenController.swift */,
+			);
+			path = MP3ScreenController;
+			sourceTree = "<group>";
+		};
+		315E137E2CF0885600137500 /* VideoAudioRemoverController */ = {
+			isa = PBXGroup;
+			children = (
+				31E7B2992CEF448F0024AE31 /* VideoAudioRemoverController.swift */,
+				31E7B29A2CEF448F0024AE31 /* VideoAudioRemoverController.xib */,
+			);
+			path = VideoAudioRemoverController;
+			sourceTree = "<group>";
+		};
+		315E137F2CF08B6400137500 /* VideoToBoomerangController */ = {
+			isa = PBXGroup;
+			children = (
+				315E13782CF065D100137500 /* VideoToBoomerangController.swift */,
+				315E13792CF065D100137500 /* VideoToBoomerangController.xib */,
+			);
+			path = VideoToBoomerangController;
 			sourceTree = "<group>";
 		};
 		316476452CE72B9700A62112 /* Extension */ = {
@@ -222,8 +260,6 @@
 				31DEBA8C2CE30CDA0067361D /* Assets.xcassets */,
 				31DEBA8E2CE30CDA0067361D /* LaunchScreen.storyboard */,
 				31DEBA912CE30CDA0067361D /* Info.plist */,
-				31E7B2992CEF448F0024AE31 /* VideoAudioRemoverController.swift */,
-				31E7B29A2CEF448F0024AE31 /* VideoAudioRemoverController.xib */,
 			);
 			path = VideoToMP3;
 			sourceTree = "<group>";
@@ -265,8 +301,10 @@
 		31DEBAC22CE332310067361D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				31DEBA872CE30CD80067361D /* ViewController.swift */,
-				31DEBAC62CE334E30067361D /* MP3ScreenController.swift */,
+				315E137F2CF08B6400137500 /* VideoToBoomerangController */,
+				315E137D2CF06CAF00137500 /* MP3ScreenController */,
+				315E137C2CF06C8B00137500 /* MainViewController */,
+				315E137E2CF0885600137500 /* VideoAudioRemoverController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -392,6 +430,7 @@
 				31DEBA8D2CE30CDA0067361D /* Assets.xcassets in Resources */,
 				31CFC9752CE4771D00F74A10 /* SF-Pro-Text-Bold.otf in Resources */,
 				31DEBABE2CE31C250067361D /* Roboto-Thin.ttf in Resources */,
+				315E137B2CF065D100137500 /* VideoToBoomerangController.xib in Resources */,
 				31CFC97A2CE4771D00F74A10 /* SF-Pro-Text-LightItalic.otf in Resources */,
 				31DEBAB22CE31C250067361D /* Roboto-BoldCondensed.ttf in Resources */,
 				31DEBAB32CE31C250067361D /* Roboto-BoldCondensedItalic.ttf in Resources */,
@@ -456,6 +495,7 @@
 			files = (
 				31DEBA882CE30CD80067361D /* ViewController.swift in Sources */,
 				316476492CE72C6500A62112 /* UIView+Gradient.swift in Sources */,
+				315E137A2CF065D100137500 /* VideoToBoomerangController.swift in Sources */,
 				316476472CE72C2C00A62112 /* Colors.swift in Sources */,
 				31DEBAC72CE334E30067361D /* MP3ScreenController.swift in Sources */,
 				3189D3022CE5D3D6006131F1 /* VolumeSliderCell.swift in Sources */,
