@@ -28,15 +28,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 return "Video to MP3"
             case .videoAudioRemover:
                 return "Video Audio Remover"
+           
             }
         }
         
         var destination: ViewController.MediaDestination {
             switch self {
+                
             case .videoToMP3:
                 return .mp3Screen
+                
             case .videoAudioRemover:
                 return .audioRemover
+                
             }
         }
     }
