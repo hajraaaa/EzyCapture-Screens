@@ -21,6 +21,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     enum VideoAudioOption: Int, CaseIterable {
         case videoToMP3
         case videoAudioRemover
+        case videoToBoomerang
 
         var title: String {
             switch self {
@@ -28,7 +29,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 return "Video to MP3"
             case .videoAudioRemover:
                 return "Video Audio Remover"
-           
+            case .videoToBoomerang:
+                return "Video To Boomerang"
             }
         }
         
@@ -40,6 +42,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
             case .videoAudioRemover:
                 return .audioRemover
+                
+            case .videoToBoomerang:
+                return .boomerangScreen
                 
             }
         }
@@ -75,6 +80,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     enum MediaDestination {
         case mp3Screen
         case audioRemover
+        case boomerangScreen
     }
     
     func showMediaOptions(destination: MediaDestination) {
@@ -131,6 +137,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let removerVC = VideoAudioRemoverController(nibName: "VideoAudioRemoverController", bundle: nil)
             removerVC.selectedVideoURL = videoURL
             self.navigationController?.pushViewController(removerVC, animated: true)
+            
+        case .boomerangScreen:
+                let boomerangVC = VideoToBoomerangController(nibName: "VideoToBoomerangController", bundle: nil)
+                boomerangVC.selectedVideoURL = videoURL 
+                self.navigationController?.pushViewController(boomerangVC, animated: true)
         }
     }
 }
