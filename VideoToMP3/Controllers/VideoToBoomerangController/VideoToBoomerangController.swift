@@ -1,13 +1,13 @@
 import UIKit
 import AVKit
 
-class VideoToBoomerangController: UIViewController {
+class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDelegate {
 
     
     @IBOutlet weak var videoPlayerView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var videoView: UIView!
+    @IBOutlet weak var videoClipView: VideoClipCollectionView!
     @IBOutlet weak var startTime: UILabel!
     @IBOutlet weak var endTime: UILabel!
     @IBOutlet weak var forwardVideo: UILabel!
@@ -25,9 +25,24 @@ class VideoToBoomerangController: UIViewController {
         super.viewDidLoad()
         setupNavigationBar()
         displaySelectedVideo()
+        videoClipView.delegate = self
+        styleLabel(startTime)
+        styleLabel(endTime)
 
     }
     
+    func styleLabel(_ label: UILabel) {
+        label.backgroundColor = .white
+        label.layer.borderColor = UIColor(named: "border")?.cgColor
+        label.layer.cornerRadius = 8
+        label.layer.masksToBounds = true
+        label.layer.borderWidth = 2 
+        }
+    
+    // MARK: - VideoClipCollectionViewDelegate
+        func didSelectClip(startTime: String, endTime: String) {
+            print("Clip Selected: \(startTime) - \(endTime)")
+        }
     // MARK: - Navigation Bar Setup
         func setupNavigationBar() {
             self.title = "Video to Boomerang"

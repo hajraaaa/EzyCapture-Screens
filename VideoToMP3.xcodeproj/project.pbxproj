@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31002B322CF820280029CA00 /* VideoClipCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31002B312CF820280029CA00 /* VideoClipCollectionView.xib */; };
+		31002B362CF8206C0029CA00 /* VideoClipCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31002B352CF8206C0029CA00 /* VideoClipCollectionView.swift */; };
+		31002B392CF820EF0029CA00 /* VideoClipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31002B372CF820EF0029CA00 /* VideoClipCell.swift */; };
+		31002B3A2CF820EF0029CA00 /* VideoClipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31002B382CF820EF0029CA00 /* VideoClipCell.xib */; };
 		315E137A2CF065D100137500 /* VideoToBoomerangController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E13782CF065D100137500 /* VideoToBoomerangController.swift */; };
 		315E137B2CF065D100137500 /* VideoToBoomerangController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 315E13792CF065D100137500 /* VideoToBoomerangController.xib */; };
 		316476472CE72C2C00A62112 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316476462CE72C2C00A62112 /* Colors.swift */; };
@@ -61,6 +65,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31002B312CF820280029CA00 /* VideoClipCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoClipCollectionView.xib; sourceTree = "<group>"; };
+		31002B352CF8206C0029CA00 /* VideoClipCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoClipCollectionView.swift; sourceTree = "<group>"; };
+		31002B372CF820EF0029CA00 /* VideoClipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoClipCell.swift; sourceTree = "<group>"; };
+		31002B382CF820EF0029CA00 /* VideoClipCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoClipCell.xib; sourceTree = "<group>"; };
 		315E13782CF065D100137500 /* VideoToBoomerangController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoToBoomerangController.swift; sourceTree = "<group>"; };
 		315E13792CF065D100137500 /* VideoToBoomerangController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoToBoomerangController.xib; sourceTree = "<group>"; };
 		316476462CE72C2C00A62112 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -260,6 +268,10 @@
 				31DEBA8C2CE30CDA0067361D /* Assets.xcassets */,
 				31DEBA8E2CE30CDA0067361D /* LaunchScreen.storyboard */,
 				31DEBA912CE30CDA0067361D /* Info.plist */,
+				31002B312CF820280029CA00 /* VideoClipCollectionView.xib */,
+				31002B352CF8206C0029CA00 /* VideoClipCollectionView.swift */,
+				31002B372CF820EF0029CA00 /* VideoClipCell.swift */,
+				31002B382CF820EF0029CA00 /* VideoClipCell.xib */,
 			);
 			path = VideoToMP3;
 			sourceTree = "<group>";
@@ -428,6 +440,8 @@
 				31DEBA9A2CE317D50067361D /* VideoToMP3Cell.xib in Resources */,
 				31E7B29C2CEF448F0024AE31 /* VideoAudioRemoverController.xib in Resources */,
 				31DEBA8D2CE30CDA0067361D /* Assets.xcassets in Resources */,
+				31002B3A2CF820EF0029CA00 /* VideoClipCell.xib in Resources */,
+				31002B322CF820280029CA00 /* VideoClipCollectionView.xib in Resources */,
 				31CFC9752CE4771D00F74A10 /* SF-Pro-Text-Bold.otf in Resources */,
 				31DEBABE2CE31C250067361D /* Roboto-Thin.ttf in Resources */,
 				315E137B2CF065D100137500 /* VideoToBoomerangController.xib in Resources */,
@@ -494,6 +508,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31DEBA882CE30CD80067361D /* ViewController.swift in Sources */,
+				31002B392CF820EF0029CA00 /* VideoClipCell.swift in Sources */,
 				316476492CE72C6500A62112 /* UIView+Gradient.swift in Sources */,
 				315E137A2CF065D100137500 /* VideoToBoomerangController.swift in Sources */,
 				316476472CE72C2C00A62112 /* Colors.swift in Sources */,
@@ -502,6 +517,7 @@
 				31DEBA992CE317D50067361D /* VideoToMP3Cell.swift in Sources */,
 				31DEBA842CE30CD80067361D /* AppDelegate.swift in Sources */,
 				3164764B2CE7784C00A62112 /* DropdownOptions.swift in Sources */,
+				31002B362CF8206C0029CA00 /* VideoClipCollectionView.swift in Sources */,
 				31E7B29B2CEF448F0024AE31 /* VideoAudioRemoverController.swift in Sources */,
 				31DEBA862CE30CD80067361D /* SceneDelegate.swift in Sources */,
 				3189D3042CE5D4F0006131F1 /* VolumeSliderView.swift in Sources */,
