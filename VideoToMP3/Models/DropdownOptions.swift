@@ -7,4 +7,6 @@ class DropdownOptions {
     ]
     
     static let defaultOptions = ["Auto", "VBR", "CBR"]
+    
+    static let gifOptions = ["AVI", "FLV", "GIF", "MP4", "WEBM"]
 }

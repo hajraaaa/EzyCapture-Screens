@@ -4,5 +4,7 @@ target 'VideoToMP3' do
   use_frameworks!
 
   pod 'ffmpeg-kit-ios-full', '~> 6.0'
+  pod 'PryntTrimmerView'
+
 
 end

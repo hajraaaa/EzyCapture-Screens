@@ -16,37 +16,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="337" height="206"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TzN-Cz-hcC">
-                        <rect key="frame" x="0.0" y="0.0" width="337" height="173.66666666666666"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TzN-Cz-hcC">
+                        <rect key="frame" x="0.0" y="0.0" width="337" height="206"/>
                     </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="221" translatesAutoresizingMaskIntoConstraints="NO" id="OP0-8W-on6">
-                        <rect key="frame" x="10" y="187.66666666666666" width="317" height="13.333333333333343"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0N9-Ds-Tc6">
-                                <rect key="frame" x="0.0" y="0.0" width="67.333333333333329" height="13.333333333333334"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXD-vJ-csE">
-                                <rect key="frame" x="288.33333333333331" y="0.0" width="28.666666666666686" height="13.333333333333334"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                    </stackView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="TzN-Cz-hcC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="6lO-hR-nvK"/>
-                <constraint firstItem="TzN-Cz-hcC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7hv-ry-JFm"/>
-                <constraint firstAttribute="trailing" secondItem="TzN-Cz-hcC" secondAttribute="trailing" id="9aU-eh-atX"/>
-                <constraint firstItem="OP0-8W-on6" firstAttribute="top" secondItem="TzN-Cz-hcC" secondAttribute="bottom" constant="14" id="GIY-z4-XHL"/>
-                <constraint firstAttribute="trailing" secondItem="OP0-8W-on6" secondAttribute="trailing" constant="10" id="Hgo-FA-dCh"/>
-                <constraint firstItem="OP0-8W-on6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="Vbj-YQ-PxU"/>
-                <constraint firstAttribute="bottom" secondItem="OP0-8W-on6" secondAttribute="bottom" constant="5" id="yR4-n0-GVP"/>
+                <constraint firstItem="TzN-Cz-hcC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="6yJ-93-TpG"/>
+                <constraint firstItem="TzN-Cz-hcC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SdK-wI-gL4"/>
+                <constraint firstAttribute="trailing" secondItem="TzN-Cz-hcC" secondAttribute="trailing" id="cRO-pS-FbK"/>
+                <constraint firstAttribute="bottom" secondItem="TzN-Cz-hcC" secondAttribute="bottom" id="cVO-Ab-3qr"/>
             </constraints>
             <size key="customSize" width="337" height="206"/>
             <connections>
