@@ -20,72 +20,131 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		08FC8213D4CA66254169FEC659769FB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		15510A8F62621F51A82276034B085999 /* Pods-VideoToMP3-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E139498D2EEA3736E2994E8EAEED9A /* Pods-VideoToMP3-dummy.m */; };
-		C9B485C76850968BA3B062C7E4848FD9 /* Pods-VideoToMP3-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B06F5F38A20A2CCEF9FFA30F162BB7A /* Pods-VideoToMP3-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A44219F4F0FC351F4B18F25F00003CE /* AssetVideoScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593D44C08B1DC3073984BFD30522897F /* AssetVideoScrollView.swift */; };
+		1BCC1949F045258AB0BBA3155214808D /* ThumbSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872A73F9A0121D894A39DACEAA679F42 /* ThumbSelectorView.swift */; };
+		279FDCEBE6339AEFF08CA20C4AA2588F /* Pods-VideoToMP3-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E139498D2EEA3736E2994E8EAEED9A /* Pods-VideoToMP3-dummy.m */; };
+		410E76809C0FCCDECA1CFDA9623F2B74 /* PryntTrimmerView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 37EEB046CD23E88CAD63B496524103D2 /* PryntTrimmerView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		42F92AB18880E24EEA45CB3CFE8A1F24 /* VideoScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD46E5ABBD146E1DD1AEF99D79C28F26 /* VideoScrollView.swift */; };
+		69B68AD3FE8162AA8D74546C89224118 /* VideoCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56942D89C157F1682BFF2E84280B396B /* VideoCropView.swift */; };
+		6EB118FC6EDF40D92146E750CD74275B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		7143658ED4C610590FDE589F45567880 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		78BCDBF500EF461FC8353D9EC051D535 /* Pods-VideoToMP3-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B06F5F38A20A2CCEF9FFA30F162BB7A /* Pods-VideoToMP3-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8268CBB289118B63830E3698D0BCF7BD /* HandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D2EA2CDE56A54084CEF87C1F924995 /* HandlerView.swift */; };
+		83FB07BCBDA31CA0915642BA9B58A41A /* CropMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212F6E738FE8F917CCBA081BED9793A /* CropMaskView.swift */; };
+		B6743E57926B36B9330AA1C193105AB2 /* PryntTrimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E404EDC9FF81E1093AF28B584600615 /* PryntTrimmerView.swift */; };
+		D42666C01AED00E509F7A0EEC274FC29 /* AVAssetTimeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4356807232C0AB3AD6AFAB0AC4EE63D /* AVAssetTimeSelector.swift */; };
+		EFEAADC57D308C080F488C57B7C653BE /* PryntTrimmerView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA1672D2C84FE6DDF24EBFB4C3B64BB /* PryntTrimmerView-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5FBEE4C3DD7548BAAE2C34A420C90576 /* PBXContainerItemProxy */ = {
+		2E6BE3185E8736A2EF82AB55F6842581 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 99C9B375C2185AA3E53316AC4BF6ECE7;
 			remoteInfo = "ffmpeg-kit-ios-full";
 		};
+		B309AE981BD1E5FE47408B9A222F24C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 492A3F539D36426FFCED62F4F58F688B;
+			remoteInfo = PryntTrimmerView;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0667DC5D873B8E3CEBAF5B35EC377CD7 /* Pods-VideoToMP3-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VideoToMP3-frameworks.sh"; sourceTree = "<group>"; };
-		09286AE6BE229107B254522BF83FF2FE /* libavutil.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = libavutil.xcframework; sourceTree = "<group>"; };
 		1153E5139E13AF8E6F4B55031551EF06 /* Pods-VideoToMP3 */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-VideoToMP3"; path = Pods_VideoToMP3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		15E26B997A8C03885715801C8E67B3EE /* libavcodec.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = libavcodec.xcframework; sourceTree = "<group>"; };
+		11EDD0C80FD879FBEC41ED86E69CCFAB /* ffmpeg-kit-ios-full-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "ffmpeg-kit-ios-full-xcframeworks.sh"; sourceTree = "<group>"; };
+		17CB96D8ACE16121F14CD1B31474B768 /* PryntTrimmerView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PryntTrimmerView.release.xcconfig; sourceTree = "<group>"; };
+		22C0CC2FF9EE62DE6040B8C0C692087D /* libavcodec.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = libavcodec.xcframework; sourceTree = "<group>"; };
 		2B06F5F38A20A2CCEF9FFA30F162BB7A /* Pods-VideoToMP3-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VideoToMP3-umbrella.h"; sourceTree = "<group>"; };
+		37EEB046CD23E88CAD63B496524103D2 /* PryntTrimmerView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PryntTrimmerView-umbrella.h"; sourceTree = "<group>"; };
 		3AFDDEA60B4B301AF8A35D4A37D4D3D8 /* Pods-VideoToMP3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VideoToMP3.debug.xcconfig"; sourceTree = "<group>"; };
+		3F7EBB9840AFA7EB5A43A20311155107 /* libavformat.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = libavformat.xcframework; sourceTree = "<group>"; };
+		4E404EDC9FF81E1093AF28B584600615 /* PryntTrimmerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PryntTrimmerView.swift; path = Sources/PryntTrimmerView/Trimmer/PryntTrimmerView.swift; sourceTree = "<group>"; };
+		56942D89C157F1682BFF2E84280B396B /* VideoCropView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VideoCropView.swift; path = Sources/PryntTrimmerView/Cropper/VideoCropView.swift; sourceTree = "<group>"; };
+		593D44C08B1DC3073984BFD30522897F /* AssetVideoScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssetVideoScrollView.swift; path = Sources/PryntTrimmerView/Parents/AssetVideoScrollView.swift; sourceTree = "<group>"; };
+		5B3AAD2076520EDF7BAA3F36C18DF4C1 /* PryntTrimmerView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PryntTrimmerView-prefix.pch"; sourceTree = "<group>"; };
 		6646DD3DED027AF1D40C9E8C0F318A26 /* Pods-VideoToMP3.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-VideoToMP3.modulemap"; sourceTree = "<group>"; };
-		6DD2D137B85ED81D48484652F851DC9C /* libswscale.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = libswscale.xcframework; sourceTree = "<group>"; };
-		72526C473AE009126FB399A22A44C887 /* libavfilter.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = libavfilter.xcframework; sourceTree = "<group>"; };
+		7040030ED99211ECB02BADF9193AF19C /* libavfilter.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = libavfilter.xcframework; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		80033CE1EFB352B9BAC50A2CC21176C5 /* ffmpeg-kit-ios-full.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ffmpeg-kit-ios-full.release.xcconfig"; sourceTree = "<group>"; };
+		78E95808FEA35AE43411FAE57E5EEB66 /* ffmpegkit.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = ffmpegkit.xcframework; sourceTree = "<group>"; };
+		7CEC19D2C8B878B8A58D6AC9B97CBCD0 /* libavdevice.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = libavdevice.xcframework; sourceTree = "<group>"; };
+		872A73F9A0121D894A39DACEAA679F42 /* ThumbSelectorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThumbSelectorView.swift; path = Sources/PryntTrimmerView/ThumbSelectorView.swift; sourceTree = "<group>"; };
+		8F2D79AD6B8907C7745282FC7E3F5420 /* libswresample.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = libswresample.xcframework; sourceTree = "<group>"; };
+		8FD3D575AAA81ED8E3D94D39784AF09D /* ffmpeg-kit-ios-full.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ffmpeg-kit-ios-full.release.xcconfig"; sourceTree = "<group>"; };
 		91314E8EFB363E3B6A60342C8C967D57 /* Pods-VideoToMP3-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VideoToMP3-Info.plist"; sourceTree = "<group>"; };
 		976ED64BD1D421DA113B100657697ADD /* Pods-VideoToMP3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VideoToMP3.release.xcconfig"; sourceTree = "<group>"; };
+		9D13B3B81E8DE0A0DC7693F72CC30B76 /* PryntTrimmerView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PryntTrimmerView.modulemap; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A9E139498D2EEA3736E2994E8EAEED9A /* Pods-VideoToMP3-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VideoToMP3-dummy.m"; sourceTree = "<group>"; };
+		A9E8DEF4C835432B9FFF9EE19A71075B /* libswscale.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = libswscale.xcframework; sourceTree = "<group>"; };
+		AAA1672D2C84FE6DDF24EBFB4C3B64BB /* PryntTrimmerView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PryntTrimmerView-dummy.m"; sourceTree = "<group>"; };
 		AD56E9284E06BD6BE6E3ADE03754E2DE /* Pods-VideoToMP3-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VideoToMP3-acknowledgements.plist"; sourceTree = "<group>"; };
-		BDA6972273F75D89BCE886C5CEFE894B /* ffmpeg-kit-ios-full.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ffmpeg-kit-ios-full.debug.xcconfig"; sourceTree = "<group>"; };
-		BEF5CCD8A3B3D20961CB2A3C99394146 /* libswresample.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = libswresample.xcframework; sourceTree = "<group>"; };
+		B516BCA6BB51CC404E96BFA5FFB563DA /* libavutil.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = libavutil.xcframework; sourceTree = "<group>"; };
 		C10CBD33A5F029B0E7CB95BA63838B42 /* Pods-VideoToMP3-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VideoToMP3-acknowledgements.markdown"; sourceTree = "<group>"; };
-		CF520966F14257E6BEF8BDBE6E6D88FD /* libavdevice.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = libavdevice.xcframework; sourceTree = "<group>"; };
-		E132ACA91F07267A87BE67431BF3B29D /* ffmpegkit.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = ffmpegkit.xcframework; sourceTree = "<group>"; };
-		E4C41EB6E6166B806947C32B28C2FB68 /* ffmpeg-kit-ios-full-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "ffmpeg-kit-ios-full-xcframeworks.sh"; sourceTree = "<group>"; };
-		FF3B3991D9C781AC41B52D32F7C6F498 /* libavformat.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = libavformat.xcframework; sourceTree = "<group>"; };
+		C494043D9FDC2A404777F7ED1A9AD346 /* PryntTrimmerView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PryntTrimmerView.debug.xcconfig; sourceTree = "<group>"; };
+		C66FB125580C1178A35193EECD8BC719 /* ffmpeg-kit-ios-full.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ffmpeg-kit-ios-full.debug.xcconfig"; sourceTree = "<group>"; };
+		CD46E5ABBD146E1DD1AEF99D79C28F26 /* VideoScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VideoScrollView.swift; path = Sources/PryntTrimmerView/Cropper/VideoScrollView.swift; sourceTree = "<group>"; };
+		D09DB48D8145BFA029AAEA61818EC68B /* PryntTrimmerView */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PryntTrimmerView; path = PryntTrimmerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D212F6E738FE8F917CCBA081BED9793A /* CropMaskView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CropMaskView.swift; path = Sources/PryntTrimmerView/Cropper/CropMaskView.swift; sourceTree = "<group>"; };
+		D83047F6EC56779953ED5EE8E54E8801 /* PryntTrimmerView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PryntTrimmerView-Info.plist"; sourceTree = "<group>"; };
+		E4356807232C0AB3AD6AFAB0AC4EE63D /* AVAssetTimeSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AVAssetTimeSelector.swift; path = Sources/PryntTrimmerView/Parents/AVAssetTimeSelector.swift; sourceTree = "<group>"; };
+		F7D2EA2CDE56A54084CEF87C1F924995 /* HandlerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HandlerView.swift; path = Sources/PryntTrimmerView/Trimmer/HandlerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F078F8E4FDCCFF309E873249812E4DBD /* Frameworks */ = {
+		98FB118D2C6714F2C03A408A056B25EB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08FC8213D4CA66254169FEC659769FB7 /* Foundation.framework in Frameworks */,
+				7143658ED4C610590FDE589F45567880 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F924CB4F1DE160C3FC06FEDD700BA858 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EB118FC6EDF40D92146E750CD74275B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0D8F29CEB86C2B1D63B198EE598F8352 /* Frameworks */ = {
+		00966CB467E97AD31D80CC6855AE399C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E132ACA91F07267A87BE67431BF3B29D /* ffmpegkit.xcframework */,
-				15E26B997A8C03885715801C8E67B3EE /* libavcodec.xcframework */,
-				CF520966F14257E6BEF8BDBE6E6D88FD /* libavdevice.xcframework */,
-				72526C473AE009126FB399A22A44C887 /* libavfilter.xcframework */,
-				FF3B3991D9C781AC41B52D32F7C6F498 /* libavformat.xcframework */,
-				09286AE6BE229107B254522BF83FF2FE /* libavutil.xcframework */,
-				BEF5CCD8A3B3D20961CB2A3C99394146 /* libswresample.xcframework */,
-				6DD2D137B85ED81D48484652F851DC9C /* libswscale.xcframework */,
+				78E95808FEA35AE43411FAE57E5EEB66 /* ffmpegkit.xcframework */,
+				22C0CC2FF9EE62DE6040B8C0C692087D /* libavcodec.xcframework */,
+				7CEC19D2C8B878B8A58D6AC9B97CBCD0 /* libavdevice.xcframework */,
+				7040030ED99211ECB02BADF9193AF19C /* libavfilter.xcframework */,
+				3F7EBB9840AFA7EB5A43A20311155107 /* libavformat.xcframework */,
+				B516BCA6BB51CC404E96BFA5FFB563DA /* libavutil.xcframework */,
+				8F2D79AD6B8907C7745282FC7E3F5420 /* libswresample.xcframework */,
+				A9E8DEF4C835432B9FFF9EE19A71075B /* libswscale.xcframework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1330F54C01F3013DF200191C3D41C57B /* PryntTrimmerView */ = {
+			isa = PBXGroup;
+			children = (
+				593D44C08B1DC3073984BFD30522897F /* AssetVideoScrollView.swift */,
+				E4356807232C0AB3AD6AFAB0AC4EE63D /* AVAssetTimeSelector.swift */,
+				D212F6E738FE8F917CCBA081BED9793A /* CropMaskView.swift */,
+				F7D2EA2CDE56A54084CEF87C1F924995 /* HandlerView.swift */,
+				4E404EDC9FF81E1093AF28B584600615 /* PryntTrimmerView.swift */,
+				872A73F9A0121D894A39DACEAA679F42 /* ThumbSelectorView.swift */,
+				56942D89C157F1682BFF2E84280B396B /* VideoCropView.swift */,
+				CD46E5ABBD146E1DD1AEF99D79C28F26 /* VideoScrollView.swift */,
+				5602FCC4B7BDE5F561F905319D428AFA /* Support Files */,
+			);
+			name = PryntTrimmerView;
+			path = PryntTrimmerView;
 			sourceTree = "<group>";
 		};
 		1419F1F2F2353D2C550B8BF36CDF4B4E /* Targets Support Files */ = {
@@ -96,30 +155,19 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		3B7BE562B96E145F8DCD3B4ECFA48EB9 /* Products */ = {
+		5602FCC4B7BDE5F561F905319D428AFA /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				1153E5139E13AF8E6F4B55031551EF06 /* Pods-VideoToMP3 */,
+				9D13B3B81E8DE0A0DC7693F72CC30B76 /* PryntTrimmerView.modulemap */,
+				AAA1672D2C84FE6DDF24EBFB4C3B64BB /* PryntTrimmerView-dummy.m */,
+				D83047F6EC56779953ED5EE8E54E8801 /* PryntTrimmerView-Info.plist */,
+				5B3AAD2076520EDF7BAA3F36C18DF4C1 /* PryntTrimmerView-prefix.pch */,
+				37EEB046CD23E88CAD63B496524103D2 /* PryntTrimmerView-umbrella.h */,
+				C494043D9FDC2A404777F7ED1A9AD346 /* PryntTrimmerView.debug.xcconfig */,
+				17CB96D8ACE16121F14CD1B31474B768 /* PryntTrimmerView.release.xcconfig */,
 			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		4ABF5214F4F47CDB56B3BCA89E4A384F /* ffmpeg-kit-ios-full */ = {
-			isa = PBXGroup;
-			children = (
-				0D8F29CEB86C2B1D63B198EE598F8352 /* Frameworks */,
-				E62BCBA9FBBC83265A5EECEA28B4B864 /* Support Files */,
-			);
-			name = "ffmpeg-kit-ios-full";
-			path = "ffmpeg-kit-ios-full";
-			sourceTree = "<group>";
-		};
-		4B9B20BAA5567E18D44ED60A5BC474F4 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				4ABF5214F4F47CDB56B3BCA89E4A384F /* ffmpeg-kit-ios-full */,
-			);
-			name = Pods;
+			name = "Support Files";
+			path = "../Target Support Files/PryntTrimmerView";
 			sourceTree = "<group>";
 		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
@@ -128,6 +176,24 @@
 				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		98F1E2E2E12EB6C36FE58C6BB6F3042B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D2AD324C1F1CAE3C22AB55325389735E /* ffmpeg-kit-ios-full */,
+				1330F54C01F3013DF200191C3D41C57B /* PryntTrimmerView */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A10F27230B88C34AE7B1BF98EA5CF428 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1153E5139E13AF8E6F4B55031551EF06 /* Pods-VideoToMP3 */,
+				D09DB48D8145BFA029AAEA61818EC68B /* PryntTrimmerView */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		B0B744745522828F020C9EADCC2E964B /* Pods-VideoToMP3 */ = {
@@ -152,8 +218,8 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				4B9B20BAA5567E18D44ED60A5BC474F4 /* Pods */,
-				3B7BE562B96E145F8DCD3B4ECFA48EB9 /* Products */,
+				98F1E2E2E12EB6C36FE58C6BB6F3042B /* Pods */,
+				A10F27230B88C34AE7B1BF98EA5CF428 /* Products */,
 				1419F1F2F2353D2C550B8BF36CDF4B4E /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -166,12 +232,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E62BCBA9FBBC83265A5EECEA28B4B864 /* Support Files */ = {
+		D2AD324C1F1CAE3C22AB55325389735E /* ffmpeg-kit-ios-full */ = {
 			isa = PBXGroup;
 			children = (
-				E4C41EB6E6166B806947C32B28C2FB68 /* ffmpeg-kit-ios-full-xcframeworks.sh */,
-				BDA6972273F75D89BCE886C5CEFE894B /* ffmpeg-kit-ios-full.debug.xcconfig */,
-				80033CE1EFB352B9BAC50A2CC21176C5 /* ffmpeg-kit-ios-full.release.xcconfig */,
+				00966CB467E97AD31D80CC6855AE399C /* Frameworks */,
+				DB8F42B500620132C12DE76D92F2326C /* Support Files */,
+			);
+			name = "ffmpeg-kit-ios-full";
+			path = "ffmpeg-kit-ios-full";
+			sourceTree = "<group>";
+		};
+		DB8F42B500620132C12DE76D92F2326C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				11EDD0C80FD879FBEC41ED86E69CCFAB /* ffmpeg-kit-ios-full-xcframeworks.sh */,
+				C66FB125580C1178A35193EECD8BC719 /* ffmpeg-kit-ios-full.debug.xcconfig */,
+				8FD3D575AAA81ED8E3D94D39784AF09D /* ffmpeg-kit-ios-full.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/ffmpeg-kit-ios-full";
@@ -180,30 +256,57 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		67365CA5C8EB2EFCD2D8882CE2310DDC /* Headers */ = {
+		48E705E79A51C9067C52E96C16EA4AE3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9B485C76850968BA3B062C7E4848FD9 /* Pods-VideoToMP3-umbrella.h in Headers */,
+				410E76809C0FCCDECA1CFDA9623F2B74 /* PryntTrimmerView-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62DF1B30F61E1822E2C54FBDAF7BC5C2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78BCDBF500EF461FC8353D9EC051D535 /* Pods-VideoToMP3-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6089C7637F52A8158EBE70BF690E6456 /* Pods-VideoToMP3 */ = {
+		492A3F539D36426FFCED62F4F58F688B /* PryntTrimmerView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1FB2810F2D0BEFDC120B018E82A575F /* Build configuration list for PBXNativeTarget "Pods-VideoToMP3" */;
+			buildConfigurationList = 4432B0A8F268F1BFA2FD89A61424A3AE /* Build configuration list for PBXNativeTarget "PryntTrimmerView" */;
 			buildPhases = (
-				67365CA5C8EB2EFCD2D8882CE2310DDC /* Headers */,
-				3FDE36DEF843038E63B4CE30049F8B94 /* Sources */,
-				F078F8E4FDCCFF309E873249812E4DBD /* Frameworks */,
-				30641B015332FD578D5C872CE4D33F0F /* Resources */,
+				48E705E79A51C9067C52E96C16EA4AE3 /* Headers */,
+				41EFB99306947BC5554A26E8E552AACF /* Sources */,
+				98FB118D2C6714F2C03A408A056B25EB /* Frameworks */,
+				F3209604D98BB1D47C7F25F34EFFDB11 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				00729490AB6304297FFBDE49521BD225 /* PBXTargetDependency */,
+			);
+			name = PryntTrimmerView;
+			productName = PryntTrimmerView;
+			productReference = D09DB48D8145BFA029AAEA61818EC68B /* PryntTrimmerView */;
+			productType = "com.apple.product-type.framework";
+		};
+		6089C7637F52A8158EBE70BF690E6456 /* Pods-VideoToMP3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8A46DB26D067C3094EF94525FBDACBD /* Build configuration list for PBXNativeTarget "Pods-VideoToMP3" */;
+			buildPhases = (
+				62DF1B30F61E1822E2C54FBDAF7BC5C2 /* Headers */,
+				9DCCAB108A7B97DE29733C287774B64E /* Sources */,
+				F924CB4F1DE160C3FC06FEDD700BA858 /* Frameworks */,
+				A0A1ABFE5B7128E1E1E006F925699F70 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4FC43AE59B1B79CBFFEB1DB0902B289C /* PBXTargetDependency */,
+				C4ED04364219C95BA6805F9872CB956E /* PBXTargetDependency */,
 			);
 			name = "Pods-VideoToMP3";
 			productName = Pods_VideoToMP3;
@@ -228,18 +331,26 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 3B7BE562B96E145F8DCD3B4ECFA48EB9 /* Products */;
+			productRefGroup = A10F27230B88C34AE7B1BF98EA5CF428 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				99C9B375C2185AA3E53316AC4BF6ECE7 /* ffmpeg-kit-ios-full */,
 				6089C7637F52A8158EBE70BF690E6456 /* Pods-VideoToMP3 */,
+				492A3F539D36426FFCED62F4F58F688B /* PryntTrimmerView */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		30641B015332FD578D5C872CE4D33F0F /* Resources */ = {
+		A0A1ABFE5B7128E1E1E006F925699F70 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3209604D98BB1D47C7F25F34EFFDB11 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -269,27 +380,83 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3FDE36DEF843038E63B4CE30049F8B94 /* Sources */ = {
+		41EFB99306947BC5554A26E8E552AACF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15510A8F62621F51A82276034B085999 /* Pods-VideoToMP3-dummy.m in Sources */,
+				0A44219F4F0FC351F4B18F25F00003CE /* AssetVideoScrollView.swift in Sources */,
+				D42666C01AED00E509F7A0EEC274FC29 /* AVAssetTimeSelector.swift in Sources */,
+				83FB07BCBDA31CA0915642BA9B58A41A /* CropMaskView.swift in Sources */,
+				8268CBB289118B63830E3698D0BCF7BD /* HandlerView.swift in Sources */,
+				B6743E57926B36B9330AA1C193105AB2 /* PryntTrimmerView.swift in Sources */,
+				EFEAADC57D308C080F488C57B7C653BE /* PryntTrimmerView-dummy.m in Sources */,
+				1BCC1949F045258AB0BBA3155214808D /* ThumbSelectorView.swift in Sources */,
+				69B68AD3FE8162AA8D74546C89224118 /* VideoCropView.swift in Sources */,
+				42F92AB18880E24EEA45CB3CFE8A1F24 /* VideoScrollView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DCCAB108A7B97DE29733C287774B64E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				279FDCEBE6339AEFF08CA20C4AA2588F /* Pods-VideoToMP3-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		00729490AB6304297FFBDE49521BD225 /* PBXTargetDependency */ = {
+		4FC43AE59B1B79CBFFEB1DB0902B289C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PryntTrimmerView;
+			target = 492A3F539D36426FFCED62F4F58F688B /* PryntTrimmerView */;
+			targetProxy = B309AE981BD1E5FE47408B9A222F24C8 /* PBXContainerItemProxy */;
+		};
+		C4ED04364219C95BA6805F9872CB956E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ffmpeg-kit-ios-full";
 			target = 99C9B375C2185AA3E53316AC4BF6ECE7 /* ffmpeg-kit-ios-full */;
-			targetProxy = 5FBEE4C3DD7548BAAE2C34A420C90576 /* PBXContainerItemProxy */;
+			targetProxy = 2E6BE3185E8736A2EF82AB55F6842581 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1A23C212CB47BD5A7745F21BAAAA51E5 /* Release */ = {
+		4693416890C50AF8A8181AD36BFEB9DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C494043D9FDC2A404777F7ED1A9AD346 /* PryntTrimmerView.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/PryntTrimmerView/PryntTrimmerView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PryntTrimmerView/PryntTrimmerView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/PryntTrimmerView/PryntTrimmerView.modulemap";
+				PRODUCT_MODULE_NAME = PryntTrimmerView;
+				PRODUCT_NAME = PryntTrimmerView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		667C22C3C8BE3DC3B26BC80EDB312490 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 976ED64BD1D421DA113B100657697ADD /* Pods-VideoToMP3.release.xcconfig */;
 			buildSettings = {
@@ -326,43 +493,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		681CFD5A13DBFAEF030E0E9972740C29 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3AFDDEA60B4B301AF8A35D4A37D4D3D8 /* Pods-VideoToMP3.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-VideoToMP3/Pods-VideoToMP3-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-VideoToMP3/Pods-VideoToMP3.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		8DE5143C03248BB6CD542DE3963D6F3A /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -494,7 +624,7 @@
 		};
 		A3A01296F07B34B78C0408D709BA12AF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 80033CE1EFB352B9BAC50A2CC21176C5 /* ffmpeg-kit-ios-full.release.xcconfig */;
+			baseConfigurationReference = 8FD3D575AAA81ED8E3D94D39784AF09D /* ffmpeg-kit-ios-full.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -510,9 +640,81 @@
 			};
 			name = Release;
 		};
+		CB571D0290B427310A493D846978F025 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17CB96D8ACE16121F14CD1B31474B768 /* PryntTrimmerView.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/PryntTrimmerView/PryntTrimmerView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PryntTrimmerView/PryntTrimmerView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/PryntTrimmerView/PryntTrimmerView.modulemap";
+				PRODUCT_MODULE_NAME = PryntTrimmerView;
+				PRODUCT_NAME = PryntTrimmerView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DC5CA6ACAECCB2CABEF3451C9E331356 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AFDDEA60B4B301AF8A35D4A37D4D3D8 /* Pods-VideoToMP3.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-VideoToMP3/Pods-VideoToMP3-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VideoToMP3/Pods-VideoToMP3.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		F39249B3AE2023DEC0302DD069DE9AC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BDA6972273F75D89BCE886C5CEFE894B /* ffmpeg-kit-ios-full.debug.xcconfig */;
+			baseConfigurationReference = C66FB125580C1178A35193EECD8BC719 /* ffmpeg-kit-ios-full.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -530,6 +732,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4432B0A8F268F1BFA2FD89A61424A3AE /* Build configuration list for PBXNativeTarget "PryntTrimmerView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4693416890C50AF8A8181AD36BFEB9DB /* Debug */,
+				CB571D0290B427310A493D846978F025 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -539,11 +750,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1FB2810F2D0BEFDC120B018E82A575F /* Build configuration list for PBXNativeTarget "Pods-VideoToMP3" */ = {
+		D8A46DB26D067C3094EF94525FBDACBD /* Build configuration list for PBXNativeTarget "Pods-VideoToMP3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				681CFD5A13DBFAEF030E0E9972740C29 /* Debug */,
-				1A23C212CB47BD5A7745F21BAAAA51E5 /* Release */,
+				DC5CA6ACAECCB2CABEF3451C9E331356 /* Debug */,
+				667C22C3C8BE3DC3B26BC80EDB312490 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

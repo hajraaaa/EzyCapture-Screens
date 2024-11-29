@@ -4,7 +4,7 @@ class VideoClipCell: UICollectionViewCell {
     
     @IBOutlet weak var thumbnailImageView: UIImageView!
 
-    func configure(with thumbnail: UIImage, startTime: String, endTime: String) {
+    func configure(with thumbnail: UIImage) {
             thumbnailImageView.image = thumbnail
         }
 
