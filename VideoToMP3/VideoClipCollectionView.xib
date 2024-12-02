@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="collectionView" destination="xGu-8T-rQ3" id="uUW-gl-Hai"/>
                 <outlet property="endTimeButton" destination="EZM-Uj-mHi" id="2EC-2B-Em3"/>
+                <outlet property="highlightView" destination="yH8-6L-xvi" id="ARQ-9V-Drl"/>
                 <outlet property="startTimeButton" destination="FiL-2L-cxp" id="tmB-Is-51z"/>
             </connections>
         </placeholder>
@@ -37,7 +38,10 @@
                             <rect key="frame" x="0.0" y="0.0" width="675" height="291"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiL-2L-cxp">
-                                    <rect key="frame" x="0.0" y="119.66666666666669" width="32.666666666666664" height="52"/>
+                                    <rect key="frame" x="0.0" y="119.66666666666669" width="9" height="52"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="9" id="mrb-92-F4C"/>
+                                    </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="Group 55129"/>
                                     <connections>
@@ -45,7 +49,10 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZM-Uj-mHi">
-                                    <rect key="frame" x="642.33333333333337" y="119.66666666666669" width="32.666666666666629" height="52"/>
+                                    <rect key="frame" x="666" y="119.66666666666669" width="9" height="52"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="9" id="GB1-gO-KKo"/>
+                                    </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="Group 82277"/>
                                     <connections>
