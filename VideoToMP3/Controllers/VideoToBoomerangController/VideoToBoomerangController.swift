@@ -43,6 +43,7 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
         applyBorderToTableView()
         setupBorderedView()
         configureTableView()
+        videoClipView.delegate = self
         
         tableView.isHidden = true
         tableView.delegate = self
@@ -118,6 +119,15 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
     // MARK: - VideoClipCollectionViewDelegate
     func didSelectClip(startTime: String, endTime: String) {
         print("Clip Selected: \(startTime) - \(endTime)")
+//                self.startTime.text = "\(startTime)"
+//                self.endTime.text = "\(endTime)"
+        if !startTime.isEmpty {
+                self.startTime.text = startTime
+            }
+            if !endTime.isEmpty {
+                self.endTime.text = endTime
+            }
+        
     }
     
     // MARK: - Dropdown Actions
@@ -171,27 +181,6 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
     }
     
     // MARK: - Video Playback
-//    private func displaySelectedVideo() {
-//        guard let url = selectedVideoURL else {
-//            print("No video URL passed")
-//            return
-//        }
-//        
-//        playerLayer?.removeFromSuperlayer()
-//        playerLayer = nil
-//        
-//        player = AVPlayer(url: url)
-//        playerLayer = AVPlayerLayer(player: player)
-//        playerLayer?.frame = videoPlayerView.bounds
-//        playerLayer?.videoGravity = .resizeAspectFill
-//        
-//        if let playerLayer = playerLayer {
-//            videoPlayerView.layer.addSublayer(playerLayer)
-//        }
-//        imageView.isHidden = true
-//        playButton.isHidden = false
-//    }
-    
     private func displaySelectedVideo() {
         guard let url = selectedVideoURL else {
             print("No video URL passed")
@@ -269,10 +258,3 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
             tableView.isHidden = true
         }
     }
-
-
-func didSelectClip(startTime: String, endTime: String) {
-    print("Selected Clip: Start Time - \(startTime), End Time - \(endTime)")
-    // Optionally, you can update UI or perform further actions based on the selected clip
-}
-
