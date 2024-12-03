@@ -4,16 +4,23 @@ protocol VideoClipCollectionViewDelegate: AnyObject {
     func didSelectClip(startTime: String, endTime: String)
 }
 
-class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
+class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var startTimeButton: UIButton!
     @IBOutlet weak var endTimeButton: UIButton!
     @IBOutlet weak var highlightView: UIView!
-
+    
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var bottomView: UIView!
+    
+    
     weak var delegate: VideoClipCollectionViewDelegate?
     var startTime: String = ""
-       var endTime: String = ""
+    var endTime: String = ""
+    
+    private var topBorder: UIView = UIView()
+    private var bottomBorder: UIView = UIView()
     
     var videoClips: [(thumbnail: UIImage, startTime: String, endTime: String)] = []
     var startButtonInitialX: CGFloat = 0
@@ -37,6 +44,7 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
         addSubview(view)
 
         setupCollectionView()
+        setupHighlightView()
         setupTapGesture()
         setupPanGestures()
     }
@@ -61,9 +69,6 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
     }
 
     private func setupHighlightView() {
-        highlightView = UIView()
-        addSubview(highlightView)
-        sendSubviewToBack(highlightView)
         updateHighlightViewFrame()
     }
     
@@ -72,22 +77,26 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
         let endX = endTimeButton.frame.minX
         let width = max(endX - startX, 0)
         let height: CGFloat = 40
-
+            
         let path = CGMutablePath()
         let highlightRect = CGRect(x: startX, y: startTimeButton.frame.midY - height / 2, width: width, height: height)
-        path.addRoundedRect(in: highlightRect, cornerWidth: 1, cornerHeight: 1)
-
+        path.addRoundedRect(in: highlightRect, cornerWidth: 0, cornerHeight: 0)
         path.addRect(CGRect(origin: .zero, size: self.bounds.size))
-
         let maskLayer = CAShapeLayer()
-        maskLayer.backgroundColor = UIColor.black.cgColor
         maskLayer.path = path
         maskLayer.fillRule = .evenOdd
-        maskLayer.fillColor = UIColor.systemBlue.cgColor
-
         highlightView.layer.mask = maskLayer
+        
+    }
+    private func addRedColorToSelectedArea(_ highlightRect: CGRect) {
+        // Apply the red background to the selected part (between startTimeButton and endTimeButton)
+        let redView = UIView(frame: highlightRect)
+        redView.backgroundColor = UIColor.red
+        topView.addSubview(redView)
+        bottomView.addSubview(redView)
     }
 
+   
     private func setupTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         self.addGestureRecognizer(tapGesture)
@@ -102,9 +111,7 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
     }
 
     @objc func handleTapGesture() {
-        startTimeButton.isHidden = !startTimeButton.isHidden
-        endTimeButton.isHidden = !endTimeButton.isHidden
-        highlightView.isHidden = !highlightView.isHidden
+        print("Tap detected on video clip area")
     }
 
     @objc func handleStartPan(_ gesture: UIPanGestureRecognizer) {
@@ -117,13 +124,12 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
         if newX > minX && newX < maxX {
             startTimeButton.frame.origin.x = newX
         }
-
+        
         if gesture.state == .ended {
             startButtonInitialX = startTimeButton.frame.origin.x
             updateStartTime()
         }
         
-
         updateHighlightViewFrame()
     }
 
@@ -142,7 +148,7 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
             endButtonInitialX = endTimeButton.frame.origin.x
             updateEndTime()
         }
-
+            
         updateHighlightViewFrame()
     }
 
@@ -155,13 +161,7 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
         let calculatedStartTime = calculateTime(fromXPosition: startTimeButton.frame.origin.x)
            startTime = calculatedStartTime
 
-           // Call delegate with the updated times
            delegate?.didSelectClip(startTime: startTime, endTime: endTime)
-        
-        
-//        let startTime = calculateTime(fromXPosition: startTimeButton.frame.origin.x)
-//        delegate?.didSelectClip(startTime: startTime, endTime: endTimeButton.titleLabel?.text ?? "")
-        
     }
 
     private func updateEndTime() {
@@ -169,25 +169,15 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
         let calculatedEndTime = calculateTime(fromXPosition: endTimeButton.frame.origin.x)
             endTime = calculatedEndTime 
 
-            // Call delegate with the updated times
             delegate?.didSelectClip(startTime: startTime, endTime: endTime)
         
-//        let endTime = calculateTime(fromXPosition: endTimeButton.frame.origin.x)
-        
-//        delegate?.didSelectClip(startTime: startTimeButton.titleLabel?.text ?? "", endTime: endTime)
-        
-//        delegate?.didSelectClip(startTime: startTime.text ?? "", endTime: endTime)
     }
 
     private func calculateTime(fromXPosition xPosition: CGFloat) -> String {
         
         let totalVideoWidth: CGFloat = self.frame.width
             let totalDuration: CGFloat = 300
-//        
-//        let time = Int(xPosition / 100)
-//        return String(format: "%02d:%02d", time / 60, time % 60)
-//        
-        // Calculate the time based on the x position of the button.
+
             let timeInSeconds = Int(xPosition / totalVideoWidth * totalDuration)
             return String(format: "%02d:%02d", timeInSeconds / 60, timeInSeconds % 60)
     }
@@ -218,14 +208,19 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
         startTimeButton.setTitle("\(selectedClip.startTime)", for: .normal)
         endTimeButton.setTitle("\(selectedClip.endTime)", for: .normal)
     }
+    
+    // MARK: - UICollectionViewDelegateFlowLayout Methods
 
-    // MARK: - Button Actions
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 0
+        }
 
-    @IBAction func startButtonTapped(_ sender: UIButton) {
-        print("Start button tapped!")
-    }
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+            return 0
+        }
 
-    @IBAction func endButtonTapped(_ sender: UIButton) {
-        print("End button tapped!")
-    }
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            return .zero
+        }
+
 }

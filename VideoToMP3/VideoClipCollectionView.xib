@@ -10,10 +10,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoClipCollectionView" customModule="VideoToMP3" customModuleProvider="target">
             <connections>
+                <outlet property="bottomView" destination="cww-Kd-E6S" id="5YW-RL-va9"/>
                 <outlet property="collectionView" destination="xGu-8T-rQ3" id="uUW-gl-Hai"/>
                 <outlet property="endTimeButton" destination="EZM-Uj-mHi" id="2EC-2B-Em3"/>
                 <outlet property="highlightView" destination="yH8-6L-xvi" id="ARQ-9V-Drl"/>
                 <outlet property="startTimeButton" destination="FiL-2L-cxp" id="tmB-Is-51z"/>
+                <outlet property="topView" destination="S2l-kl-aBF" id="Tf1-Yn-vFm"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -44,9 +46,6 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="Group 55129"/>
-                                    <connections>
-                                        <action selector="startButtonTapped:" destination="-1" eventType="touchUpInside" id="6I3-mp-WfV"/>
-                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZM-Uj-mHi">
                                     <rect key="frame" x="666" y="119.66666666666669" width="9" height="52"/>
@@ -55,9 +54,6 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="Group 82277"/>
-                                    <connections>
-                                        <action selector="endButtonTapped:" destination="-1" eventType="touchUpInside" id="JHU-OD-d6b"/>
-                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -70,18 +66,38 @@
                         <constraint firstAttribute="trailing" secondItem="d0e-8x-x9E" secondAttribute="trailing" id="yOC-G4-AT6"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2l-kl-aBF" userLabel="top">
+                    <rect key="frame" x="0.0" y="59" width="675" height="5"/>
+                    <color key="backgroundColor" systemColor="systemRedColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="5" id="FSJ-ef-Gyd"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cww-Kd-E6S" userLabel="bottom">
+                    <rect key="frame" x="0.0" y="252" width="675" height="5"/>
+                    <color key="backgroundColor" systemColor="systemRedColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="5" id="lPT-3t-uut"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="yH8-6L-xvi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="0Ch-mM-OtN"/>
                 <constraint firstItem="xGu-8T-rQ3" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="30k-Cw-lCh"/>
+                <constraint firstItem="S2l-kl-aBF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="3ob-9k-zwo"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="S2l-kl-aBF" secondAttribute="trailing" id="5aJ-Ub-lb8"/>
+                <constraint firstItem="cww-Kd-E6S" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="BcV-jn-nVN"/>
                 <constraint firstItem="xGu-8T-rQ3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="CdU-wW-UB0"/>
                 <constraint firstAttribute="bottom" secondItem="xGu-8T-rQ3" secondAttribute="bottom" id="DFY-YY-kdh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="cww-Kd-E6S" secondAttribute="bottom" id="Lds-ow-18w"/>
                 <constraint firstItem="xGu-8T-rQ3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bhe-Xf-4YF"/>
+                <constraint firstItem="S2l-kl-aBF" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="kYs-fB-S9C"/>
                 <constraint firstAttribute="bottom" secondItem="yH8-6L-xvi" secondAttribute="bottom" id="s2t-R5-ntA"/>
                 <constraint firstItem="yH8-6L-xvi" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="saH-0b-g55"/>
                 <constraint firstItem="yH8-6L-xvi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="t0K-yu-ajj"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cww-Kd-E6S" secondAttribute="trailing" id="vsn-1L-0Tm"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="107.63358778625954" y="-184.85915492957747"/>
@@ -92,6 +108,9 @@
         <image name="Group 82277" width="8.5" height="38"/>
         <systemColor name="systemGreenColor">
             <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
