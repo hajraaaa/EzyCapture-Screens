@@ -170,11 +170,11 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Y0V-Fz-1eC">
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Y0V-Fz-1eC">
                                             <rect key="frame" x="0.0" y="138" width="365" height="46"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ivs-LQ-MzV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="49.333333333333336" height="46"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50.333333333333336" height="46"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 85145" translatesAutoresizingMaskIntoConstraints="NO" id="L5S-4d-tYM">
                                                             <rect key="frame" x="0.0" y="0.0" width="23" height="23"/>
@@ -184,7 +184,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forward" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="juq-mi-OJI">
-                                                            <rect key="frame" x="0.0" y="23" width="49.333333333333336" height="23"/>
+                                                            <rect key="frame" x="0.0" y="23" width="49.666666666666664" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" name="direction"/>
                                                             <nil key="highlightedColor"/>
@@ -192,7 +192,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="HRd-Pi-2ZE">
-                                                    <rect key="frame" x="69.333333333333329" y="0.0" width="48.666666666666671" height="46"/>
+                                                    <rect key="frame" x="68.333333333333329" y="0.0" width="49.333333333333329" height="46"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 85146" translatesAutoresizingMaskIntoConstraints="NO" id="gFW-mu-owo">
                                                             <rect key="frame" x="0.0" y="0.0" width="23" height="23"/>
@@ -210,7 +210,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="FDB-h0-BWM">
-                                                    <rect key="frame" x="138" y="0.0" width="103.66666666666669" height="46"/>
+                                                    <rect key="frame" x="135.66666666666666" y="0.0" width="105.33333333333334" height="46"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 85150" translatesAutoresizingMaskIntoConstraints="NO" id="ARh-Bk-sKh">
                                                             <rect key="frame" x="0.0" y="0.0" width="23" height="23"/>
@@ -220,7 +220,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forward-Reverse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="xVZ-e3-ofv">
-                                                            <rect key="frame" x="0.0" y="23" width="103.66666666666667" height="23"/>
+                                                            <rect key="frame" x="0.0" y="23" width="104" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" name="bottomText"/>
                                                             <nil key="highlightedColor"/>
@@ -228,7 +228,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="lVg-hm-tim">
-                                                    <rect key="frame" x="261.66666666666669" y="0.0" width="103.33333333333331" height="46"/>
+                                                    <rect key="frame" x="259.00000000000006" y="0.0" width="105.99999999999994" height="46"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 85151" translatesAutoresizingMaskIntoConstraints="NO" id="1sJ-Pu-bEK">
                                                             <rect key="frame" x="0.0" y="0.0" width="23" height="23"/>
@@ -238,7 +238,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reverse-Forward" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="9Lt-by-AvI">
-                                                            <rect key="frame" x="0.0" y="23" width="103.33333333333333" height="23"/>
+                                                            <rect key="frame" x="0.0" y="23" width="104" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" name="bottomText"/>
                                                             <nil key="highlightedColor"/>
@@ -410,7 +410,7 @@
             <color red="0.24313725490196078" green="0.29019607843137257" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

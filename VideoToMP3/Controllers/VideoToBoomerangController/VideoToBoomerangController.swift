@@ -119,8 +119,6 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
     // MARK: - VideoClipCollectionViewDelegate
     func didSelectClip(startTime: String, endTime: String) {
         print("Clip Selected: \(startTime) - \(endTime)")
-//                self.startTime.text = "\(startTime)"
-//                self.endTime.text = "\(endTime)"
         if !startTime.isEmpty {
                 self.startTime.text = startTime
             }
@@ -136,7 +134,6 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
         tableView.reloadData()
         tableView.isHidden.toggle()
         tableviewTop.constant = 120
-        
     }
     
     // MARK: - Navigation Bar Setup
@@ -202,12 +199,11 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
         if let playerLayer = playerLayer {
             videoPlayerView.layer.addSublayer(playerLayer)
         }
+        videoPlayerView.bringSubviewToFront(playButton)
         imageView.isHidden = true
         playButton.isHidden = false
     }
 
-    
-    
     @IBAction func playButtonTapped(_ sender: UIButton) {
         guard let player = player else {
             print("No player initialized")
