@@ -11,16 +11,13 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
     @IBOutlet weak var endTimeButton: UIButton!
     @IBOutlet weak var highlightView: UIView!
     
-    @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var bottomView: UIView!
-    
     
     weak var delegate: VideoClipCollectionViewDelegate?
     var startTime: String = ""
     var endTime: String = ""
     
-    private var topBorder: UIView = UIView()
-    private var bottomBorder: UIView = UIView()
+    private var topBorderView: UIView!
+    private var bottomBorderView: UIView!
     
     var videoClips: [(thumbnail: UIImage, startTime: String, endTime: String)] = []
     var startButtonInitialX: CGFloat = 0
@@ -42,7 +39,7 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
         view.frame = bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
-
+        
         setupCollectionView()
         setupHighlightView()
         setupTapGesture()
@@ -69,7 +66,9 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
     }
 
     private func setupHighlightView() {
+        
         updateHighlightViewFrame()
+     
     }
     
     private func updateHighlightViewFrame() {
@@ -77,26 +76,46 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
         let endX = endTimeButton.frame.minX
         let width = max(endX - startX, 0)
         let height: CGFloat = 40
-            
-        let path = CGMutablePath()
+        
         let highlightRect = CGRect(x: startX, y: startTimeButton.frame.midY - height / 2, width: width, height: height)
+        
+        let path = CGMutablePath()
         path.addRoundedRect(in: highlightRect, cornerWidth: 0, cornerHeight: 0)
         path.addRect(CGRect(origin: .zero, size: self.bounds.size))
+        
         let maskLayer = CAShapeLayer()
         maskLayer.path = path
         maskLayer.fillRule = .evenOdd
-        highlightView.layer.mask = maskLayer
         
+        highlightView.layer.mask = maskLayer
+                
     }
-    private func addRedColorToSelectedArea(_ highlightRect: CGRect) {
-        // Apply the red background to the selected part (between startTimeButton and endTimeButton)
-        let redView = UIView(frame: highlightRect)
-        redView.backgroundColor = UIColor.red
-        topView.addSubview(redView)
-        bottomView.addSubview(redView)
-    }
+    
+    private func updateTopAndBottomBorders(leftHandleX: CGFloat, rightHandleX: CGFloat) {
+            if topBorderView == nil {
+                topBorderView = createBorderView()
+                addSubview(topBorderView)
+            }
 
-   
+            if bottomBorderView == nil {
+                bottomBorderView = createBorderView()
+                addSubview(bottomBorderView)
+            }
+
+            let borderHeight: CGFloat = 2
+        
+            topBorderView.frame = CGRect(x: leftHandleX, y: highlightView.frame.origin.y, width: rightHandleX - leftHandleX, height: borderHeight)
+        
+            bottomBorderView.frame = CGRect(x: leftHandleX, y: highlightView.frame.origin.y + highlightView.frame.height - borderHeight, width: rightHandleX - leftHandleX, height: borderHeight)
+        }
+
+        private func createBorderView() -> UIView {
+            let borderView = UIView()
+            borderView.backgroundColor = #colorLiteral(red: 0.9876030087, green: 0.4110053778, blue: 0.4099617898, alpha: 1)
+            return borderView
+        }
+    
+    
     private func setupTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         self.addGestureRecognizer(tapGesture)
@@ -129,8 +148,8 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
             startButtonInitialX = startTimeButton.frame.origin.x
             updateStartTime()
         }
-        
         updateHighlightViewFrame()
+        updateTopAndBottomBorders(leftHandleX: startTimeButton.frame.origin.x, rightHandleX: endTimeButton.frame.origin.x)
     }
 
     @objc func handleEndPan(_ gesture: UIPanGestureRecognizer) {
@@ -148,8 +167,8 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
             endButtonInitialX = endTimeButton.frame.origin.x
             updateEndTime()
         }
-            
         updateHighlightViewFrame()
+        updateTopAndBottomBorders(leftHandleX: startTimeButton.frame.origin.x, rightHandleX: endTimeButton.frame.origin.x)
     }
 
     func updateVideoClips(_ clips: [(thumbnail: UIImage, startTime: String, endTime: String)]) {
@@ -160,15 +179,13 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
     private func updateStartTime() {
         let calculatedStartTime = calculateTime(fromXPosition: startTimeButton.frame.origin.x)
            startTime = calculatedStartTime
-
            delegate?.didSelectClip(startTime: startTime, endTime: endTime)
     }
 
     private func updateEndTime() {
         
         let calculatedEndTime = calculateTime(fromXPosition: endTimeButton.frame.origin.x)
-            endTime = calculatedEndTime 
-
+            endTime = calculatedEndTime
             delegate?.didSelectClip(startTime: startTime, endTime: endTime)
         
     }

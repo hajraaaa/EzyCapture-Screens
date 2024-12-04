@@ -19,12 +19,16 @@
                 <outlet property="borderedView" destination="30r-PS-fbz" id="wQc-Pr-gLU"/>
                 <outlet property="endTime" destination="oZd-WB-oiA" id="cdS-4a-icW"/>
                 <outlet property="endTimeView" destination="6e7-b3-j7i" id="WHy-vn-eVe"/>
+                <outlet property="forReverseDirection" destination="FDB-h0-BWM" id="m24-fk-SoD"/>
+                <outlet property="forwardDirection" destination="ivs-LQ-MzV" id="Qtp-bM-Gas"/>
                 <outlet property="forwardReverse" destination="xVZ-e3-ofv" id="de5-Dn-4Sh"/>
                 <outlet property="forwardVideo" destination="juq-mi-OJI" id="8IT-fF-hFo"/>
                 <outlet property="gifLabel" destination="sVq-JR-4t5" id="db1-jM-JW6"/>
                 <outlet property="gifView" destination="30r-PS-fbz" id="OTF-Fa-mm3"/>
                 <outlet property="imageView" destination="WMt-yx-j3B" id="vWz-uI-ti4"/>
                 <outlet property="playButton" destination="y8A-LB-KV2" id="bWB-B6-QtY"/>
+                <outlet property="revForwardDirection" destination="lVg-hm-tim" id="PGs-0D-aOe"/>
+                <outlet property="reverseDirection" destination="HRd-Pi-2ZE" id="Wwy-QY-OgP"/>
                 <outlet property="reverseForward" destination="9Lt-by-AvI" id="THt-HX-xW9"/>
                 <outlet property="reverseVideo" destination="XKq-w8-CfO" id="uk4-ig-WSm"/>
                 <outlet property="speedView" destination="MQt-Ao-iPl" id="qdV-63-vOR"/>
@@ -228,7 +232,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="lVg-hm-tim">
-                                                    <rect key="frame" x="259.00000000000006" y="0.0" width="105.99999999999994" height="46"/>
+                                                    <rect key="frame" x="259" y="0.0" width="106" height="46"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 85151" translatesAutoresizingMaskIntoConstraints="NO" id="1sJ-Pu-bEK">
                                                             <rect key="frame" x="0.0" y="0.0" width="23" height="23"/>

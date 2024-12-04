@@ -1,8 +1,14 @@
 import UIKit
 import AVKit
 import AVFoundation
+import ffmpegkit
 
 class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDelegate, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var forwardDirection: UIStackView!
+    @IBOutlet weak var reverseDirection: UIStackView!
+    @IBOutlet weak var forReverseDirection: UIStackView!
+    @IBOutlet weak var revForwardDirection: UIStackView!
     
     
     @IBOutlet weak var videoPlayerView: UIView!
@@ -14,10 +20,12 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
     @IBOutlet weak var startTimeView: UIView!
     @IBOutlet weak var endTimeView: UIView!
     @IBOutlet weak var borderedView: UIView!
+    
     @IBOutlet weak var forwardVideo: UILabel!
     @IBOutlet weak var reverseVideo: UILabel!
     @IBOutlet weak var forwardReverse: UILabel!
     @IBOutlet weak var reverseForward: UILabel!
+    
     @IBOutlet weak var tableviewTop: NSLayoutConstraint!
     @IBOutlet weak var gifView: UIView!
     @IBOutlet weak var gifLabel: UILabel!
@@ -49,8 +57,86 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
         tableView.delegate = self
         tableView.dataSource = self
         
+        
+        // Adding tap gesture recognizers for each direction
+            let forwardTap = UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:)))
+            forwardDirection.addGestureRecognizer(forwardTap)
+            
+            let reverseTap = UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:)))
+            reverseDirection.addGestureRecognizer(reverseTap)
+            
+            let forReverseTap = UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:)))
+            forReverseDirection.addGestureRecognizer(forReverseTap)
+            
+            let revForwardTap = UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:)))
+            revForwardDirection.addGestureRecognizer(revForwardTap)
+        
     }
     
+    enum Direction {
+        case forward
+        case reverse
+        case forwardReverse
+        case reverseForward
+    }
+
+    func moveClip(direction: Direction) {
+        guard let videoURL = selectedVideoURL else {
+            print("No video selected")
+            return
+        }
+        
+        let inputPath = videoURL.path
+        let outputPath = NSTemporaryDirectory() + "output.mp4"
+        
+        // FFmpeg command for each direction
+        var ffmpegCommand = "-i input.mp4 -vf scale=1280:720 output.mp4"
+        
+        switch direction {
+        case .forward:
+            ffmpegCommand = "-i \(inputPath) -filter_complex \"setpts=PTS-STARTPTS\" \(outputPath)"
+            print("Moving forward")
+            
+        case .reverse:
+            ffmpegCommand = "-i \(inputPath) -filter_complex \"reverse\" \(outputPath)"
+            print("Moving in reverse")
+            
+        case .forwardReverse:
+            ffmpegCommand = "-i \(inputPath) -filter_complex \"reverse, setpts=PTS-STARTPTS\" \(outputPath)"
+            print("Moving forward-reverse")
+            
+        case .reverseForward:
+            ffmpegCommand = "-i \(inputPath) -filter_complex \"reverse, setpts=PTS-STARTPTS\" \(outputPath)"
+            print("Moving reverse-forward")
+        }
+        
+//        FFmpegKit.execute(withArguments: ffmpegCommand) { session in
+//            guard let session = session else { return }
+//            
+//            // Check if the return code indicates success
+//            if session.getReturnCode().isSuccess {
+//                print("Video processing complete. Output saved to: \(outputPath)")
+//                // You can now use the output video file (outputPath) to update the player
+//                self.updateVideoPlayer(with: outputPath)
+//            } else {
+//                print("FFmpeg execution failed with return code \(session.getReturnCode())")
+//            }
+//        }
+        }
+    
+    @objc func handleDirectionTap(_ sender: UITapGestureRecognizer) {
+        if sender.view == forwardDirection {
+            moveClip(direction: .forward)
+        } else if sender.view == reverseDirection {
+            moveClip(direction: .reverse)
+        } else if sender.view == forReverseDirection {
+            moveClip(direction: .forwardReverse)
+        } else if sender.view == revForwardDirection {
+            moveClip(direction: .reverseForward)
+        }
+    }
+    
+
     func styleView(_ view: UIView) {
             view.layer.cornerRadius = 8
             view.layer.masksToBounds = true
@@ -90,13 +176,11 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
                 dispatchGroup.leave()
             }
         }
-        
         dispatchGroup.notify(queue: .main) {
             completion(thumbnails)
         }
     }
-    
-    
+
       // MARK: - View Border Setup
     private func setupBorderedView() {
         addBorder(to: borderedView, color: UIColor(named: "border") ?? UIColor.black)
@@ -125,7 +209,6 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
             if !endTime.isEmpty {
                 self.endTime.text = endTime
             }
-        
     }
     
     // MARK: - Dropdown Actions
