@@ -39,6 +39,8 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
     var playerLayer: AVPlayerLayer?
     var selectedVideoURL: URL?
     
+    var selectedDirection: Direction?
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,19 +60,10 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
         tableView.dataSource = self
         
         
-        // Adding tap gesture recognizers for each direction
-            let forwardTap = UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:)))
-            forwardDirection.addGestureRecognizer(forwardTap)
-            
-            let reverseTap = UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:)))
-            reverseDirection.addGestureRecognizer(reverseTap)
-            
-            let forReverseTap = UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:)))
-            forReverseDirection.addGestureRecognizer(forReverseTap)
-            
-            let revForwardTap = UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:)))
-            revForwardDirection.addGestureRecognizer(revForwardTap)
-        
+        forwardDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
+        reverseDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
+        forReverseDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
+        revForwardDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
     }
     
     enum Direction {
@@ -80,63 +73,22 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
         case reverseForward
     }
 
-    func moveClip(direction: Direction) {
-        guard let videoURL = selectedVideoURL else {
-            print("No video selected")
-            return
-        }
-        
-        let inputPath = videoURL.path
-        let outputPath = NSTemporaryDirectory() + "output.mp4"
-        
-        // FFmpeg command for each direction
-        var ffmpegCommand = "-i input.mp4 -vf scale=1280:720 output.mp4"
-        
-        switch direction {
-        case .forward:
-            ffmpegCommand = "-i \(inputPath) -filter_complex \"setpts=PTS-STARTPTS\" \(outputPath)"
-            print("Moving forward")
-            
-        case .reverse:
-            ffmpegCommand = "-i \(inputPath) -filter_complex \"reverse\" \(outputPath)"
-            print("Moving in reverse")
-            
-        case .forwardReverse:
-            ffmpegCommand = "-i \(inputPath) -filter_complex \"reverse, setpts=PTS-STARTPTS\" \(outputPath)"
-            print("Moving forward-reverse")
-            
-        case .reverseForward:
-            ffmpegCommand = "-i \(inputPath) -filter_complex \"reverse, setpts=PTS-STARTPTS\" \(outputPath)"
-            print("Moving reverse-forward")
-        }
-        
-//        FFmpegKit.execute(withArguments: ffmpegCommand) { session in
-//            guard let session = session else { return }
-//            
-//            // Check if the return code indicates success
-//            if session.getReturnCode().isSuccess {
-//                print("Video processing complete. Output saved to: \(outputPath)")
-//                // You can now use the output video file (outputPath) to update the player
-//                self.updateVideoPlayer(with: outputPath)
-//            } else {
-//                print("FFmpeg execution failed with return code \(session.getReturnCode())")
-//            }
-//        }
-        }
-    
-    @objc func handleDirectionTap(_ sender: UITapGestureRecognizer) {
-        if sender.view == forwardDirection {
-            moveClip(direction: .forward)
-        } else if sender.view == reverseDirection {
-            moveClip(direction: .reverse)
-        } else if sender.view == forReverseDirection {
-            moveClip(direction: .forwardReverse)
-        } else if sender.view == revForwardDirection {
-            moveClip(direction: .reverseForward)
-        }
-    }
-    
 
+    // MARK: - Direction Handling
+       @objc func handleDirectionTap(_ sender: UITapGestureRecognizer) {
+           if sender.view == forwardDirection {
+               selectedDirection = .forward
+           } else if sender.view == reverseDirection {
+               selectedDirection = .reverse
+           } else if sender.view == forReverseDirection {
+               selectedDirection = .forwardReverse
+           } else if sender.view == revForwardDirection {
+               selectedDirection = .reverseForward
+           }
+           print("Selected Direction: \(selectedDirection!)")
+       }
+    
+    
     func styleView(_ view: UIView) {
             view.layer.cornerRadius = 8
             view.layer.masksToBounds = true
@@ -218,6 +170,87 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
         tableView.isHidden.toggle()
         tableviewTop.constant = 120
     }
+    
+    // MARK: - Convert Button Action
+    @IBAction func convertButtonTapped(_ sender: UIButton) {
+        guard let videoURL = selectedVideoURL else {
+            print("No video selected")
+            return
+        }
+        guard let direction = selectedDirection else {
+            print("No direction selected")
+            return
+        }
+        guard let selectedFormat = gifLabel.text else {
+            print("No output format selected")
+            return
+        }
+
+        print("Converting video in \(direction) direction with format \(selectedFormat)")
+
+        let inputPath = videoURL.path
+        let outputExtension = selectedFormat.lowercased()
+        let outputPath = NSTemporaryDirectory() + "converted_video.\(outputExtension)"
+        var ffmpegCommand = ""
+
+        switch direction {
+        case .forward:
+            ffmpegCommand = "-i \(inputPath) -filter_complex \"setpts=PTS-STARTPTS\""
+        case .reverse:
+            ffmpegCommand = "-i \(inputPath) -filter_complex \"reverse\""
+        case .forwardReverse:
+            ffmpegCommand = "-i \(inputPath) -filter_complex \"[0:v]split[main][rev];[rev]reverse[r];[main][r]concat=n=2:v=1[outv]\" -map [outv]"
+        case .reverseForward:
+            ffmpegCommand = "-i \(inputPath) -filter_complex \"[0:v]reverse[r];[r][0:v]concat=n=2:v=1[outv]\" -map [outv]"
+        }
+        
+        switch selectedFormat.lowercased() {
+        case "avi":
+            ffmpegCommand += " -c:v libx264 -crf 23 -preset medium \(outputPath)"
+        case "flv":
+            ffmpegCommand += " -c:v flv -ar 44100 \(outputPath)"
+        case "gif":
+//            ffmpegCommand += " -vf \"fps=10,scale=320:-1:flags=lanczos\" \(outputPath)"
+            ffmpegCommand += " -filter_complex \"fps=10,scale=320:-1:flags=lanczos\" \(outputPath)"
+            
+        case "mp4":
+            ffmpegCommand += " -c:v libx264 -crf 23 -preset fast \(outputPath)"
+        case "webm":
+            ffmpegCommand += " -c:v libvpx -b:v 1M -c:a libvorbis \(outputPath)"
+        default:
+            print("Unsupported format selected")
+            return
+        }
+
+        FFmpegKit.executeAsync(ffmpegCommand) { session in
+            guard let session = session else { return }
+            if session.getReturnCode().isValueSuccess() {
+                print("Conversion complete. Saved to: \(outputPath)")
+                self.saveToPhotosLibrary(outputPath: outputPath)
+            } else {
+                print("Conversion failed with code: \(session.getReturnCode())")
+            }
+        }
+    }
+
+    // MARK: - Save Video to Photos
+    private func saveToPhotosLibrary(outputPath: String) {
+        let fileURL = URL(fileURLWithPath: outputPath)
+        if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(fileURL.path) {
+            UISaveVideoAtPathToSavedPhotosAlbum(fileURL.path, self, #selector(videoSaved(_:didFinishSavingWithError:contextInfo:)), nil)
+        } else {
+            print("File is not compatible with Photos Library.")
+        }
+    }
+
+    @objc private func videoSaved(_ videoPath: String, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            print("Failed to save video: \(error.localizedDescription)")
+        } else {
+            print("Video saved successfully to Photos.")
+        }
+    }
+
     
     // MARK: - Navigation Bar Setup
     func setupNavigationBar() {
