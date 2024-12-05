@@ -1,20 +1,16 @@
 PODS:
-  - ffmpeg-kit-ios-full (6.0)
-  - PryntTrimmerView (4.0.2)
+  - ffmpeg-kit-ios-full-gpl (6.0)
 
 DEPENDENCIES:
-  - ffmpeg-kit-ios-full (~> 6.0)
-  - PryntTrimmerView
+  - ffmpeg-kit-ios-full-gpl (~> 6.0)
 
 SPEC REPOS:
   trunk:
-    - ffmpeg-kit-ios-full
-    - PryntTrimmerView
+    - ffmpeg-kit-ios-full-gpl
 
 SPEC CHECKSUMS:
-  ffmpeg-kit-ios-full: 0099a769d22114dde52cdc238397941c32f75d27
-  PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
+  ffmpeg-kit-ios-full-gpl: 80adc341962e55ef709e36baa8ed9a70cf4ea62b
 
-PODFILE CHECKSUM: e0d59158c997371681b4adfa31eb6439dece90ac
+PODFILE CHECKSUM: 0f4a8300cd44dbaafb9f5d503b156b4a2b522bcb
 
 COCOAPODS: 1.15.2
