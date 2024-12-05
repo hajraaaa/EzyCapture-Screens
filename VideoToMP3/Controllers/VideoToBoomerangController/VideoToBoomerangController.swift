@@ -66,11 +66,11 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
         revForwardDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
     }
     
-    enum Direction {
-        case forward
-        case reverse
-        case forwardReverse
-        case reverseForward
+    enum Direction: String {
+        case forward = "forward"
+        case reverse = "reverse"
+        case forwardReverse = "forward_reverse"
+        case reverseForward = "reverse_forward"
     }
 
 
@@ -190,8 +190,17 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
 
         let inputPath = videoURL.path
         let outputExtension = selectedFormat.lowercased()
-        let outputPath = NSTemporaryDirectory() + "converted_video.\(outputExtension)"
+        
+//        let uniqueFileName = "converted_video_\(Int(Date().timeIntervalSince1970)).\(outputExtension)"
+        let uniqueFileName = "converted_video_\(direction.rawValue)_\(Int(Date().timeIntervalSince1970)).\(outputExtension)"
+        
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        print("Documents Directory: \(documentsDirectory.path)")
+        let outputPath = documentsDirectory.appendingPathComponent(uniqueFileName).path
+        print("Unique file name generated: \(uniqueFileName)")
+        
         var ffmpegCommand = ""
+        print("Executing FFmpeg command: \(ffmpegCommand)")
 
         switch direction {
         case .forward:
@@ -204,15 +213,14 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
             ffmpegCommand = "-i \(inputPath) -filter_complex \"[0:v]reverse[r];[r][0:v]concat=n=2:v=1[outv]\" -map [outv]"
         }
         
-        switch selectedFormat.lowercased() {
+        switch outputExtension {
         case "avi":
             ffmpegCommand += " -c:v libx264 -crf 23 -preset medium \(outputPath)"
         case "flv":
             ffmpegCommand += " -c:v flv -ar 44100 \(outputPath)"
         case "gif":
-//            ffmpegCommand += " -vf \"fps=10,scale=320:-1:flags=lanczos\" \(outputPath)"
             ffmpegCommand += " -filter_complex \"fps=10,scale=320:-1:flags=lanczos\" \(outputPath)"
-            
+
         case "mp4":
             ffmpegCommand += " -c:v libx264 -crf 23 -preset fast \(outputPath)"
         case "webm":
@@ -226,7 +234,7 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
             guard let session = session else { return }
             if session.getReturnCode().isValueSuccess() {
                 print("Conversion complete. Saved to: \(outputPath)")
-                self.saveToPhotosLibrary(outputPath: outputPath)
+                self.saveToFileSystem(outputPath: outputPath)
             } else {
                 print("Conversion failed with code: \(session.getReturnCode())")
             }
@@ -234,24 +242,30 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
     }
 
     // MARK: - Save Video to Photos
-    private func saveToPhotosLibrary(outputPath: String) {
+    private func saveToFileSystem(outputPath: String) {
+        // Check if the file exists already
+        let fileManager = FileManager.default
         let fileURL = URL(fileURLWithPath: outputPath)
-        if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(fileURL.path) {
-            UISaveVideoAtPathToSavedPhotosAlbum(fileURL.path, self, #selector(videoSaved(_:didFinishSavingWithError:contextInfo:)), nil)
+        
+        if fileManager.fileExists(atPath: outputPath) {
+            print("File already exists at path: \(outputPath)")
         } else {
-            print("File is not compatible with Photos Library.")
+            do {
+                // Ensure the directory exists
+                let directory = fileURL.deletingLastPathComponent()
+                if !fileManager.fileExists(atPath: directory.path) {
+                    try fileManager.createDirectory(at: directory, withIntermediateDirectories: true, attributes: nil)
+                }
+                
+                // Now you can move the file or save it to the desired location
+                try fileManager.moveItem(atPath: outputPath, toPath: fileURL.path)
+                print("Video saved successfully to file system at: \(fileURL.path)")
+            } catch {
+                print("Failed to save video to file system: \(error.localizedDescription)")
+            }
         }
     }
 
-    @objc private func videoSaved(_ videoPath: String, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        if let error = error {
-            print("Failed to save video: \(error.localizedDescription)")
-        } else {
-            print("Video saved successfully to Photos.")
-        }
-    }
-
-    
     // MARK: - Navigation Bar Setup
     func setupNavigationBar() {
         self.title = "Video to Boomerang"
