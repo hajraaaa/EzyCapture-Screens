@@ -2,6 +2,8 @@ import UIKit
 import AVKit
 import AVFoundation
 import ffmpegkit
+import Photos
+
 
 class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -30,6 +32,7 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
     @IBOutlet weak var gifView: UIView!
     @IBOutlet weak var gifLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var speedView: UIView!
     
     
@@ -185,17 +188,26 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
             print("No output format selected")
             return
         }
-
+        
+        guard let volumeSliderView = speedView as? VolumeSliderView,
+              let selectedSpeed = volumeSliderView.selectedIndex else {
+            print("No speed selected")
+            return
+        }
+                
         print("Converting video in \(direction) direction with format \(selectedFormat)")
 
         let inputPath = videoURL.path
         let outputExtension = selectedFormat.lowercased()
         
 //        let uniqueFileName = "converted_video_\(Int(Date().timeIntervalSince1970)).\(outputExtension)"
+        
         let uniqueFileName = "converted_video_\(direction.rawValue)_\(Int(Date().timeIntervalSince1970)).\(outputExtension)"
+
         
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         print("Documents Directory: \(documentsDirectory.path)")
+        
         let outputPath = documentsDirectory.appendingPathComponent(uniqueFileName).path
         print("Unique file name generated: \(uniqueFileName)")
         
@@ -239,33 +251,36 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
                 print("Conversion failed with code: \(session.getReturnCode())")
             }
         }
+        
+
     }
 
     // MARK: - Save Video to Photos
     private func saveToFileSystem(outputPath: String) {
-        // Check if the file exists already
         let fileManager = FileManager.default
         let fileURL = URL(fileURLWithPath: outputPath)
         
-        if fileManager.fileExists(atPath: outputPath) {
-            print("File already exists at path: \(outputPath)")
-        } else {
-            do {
-                // Ensure the directory exists
-                let directory = fileURL.deletingLastPathComponent()
-                if !fileManager.fileExists(atPath: directory.path) {
-                    try fileManager.createDirectory(at: directory, withIntermediateDirectories: true, attributes: nil)
+        if fileManager.fileExists(atPath: fileURL.path) {
+            PHPhotoLibrary.requestAuthorization { status in
+                if status == .authorized {
+                    PHPhotoLibrary.shared().performChanges({
+                        PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: fileURL)
+                    }, completionHandler: { success, error in
+                        if success {
+                            print("Video saved successfully to Photos album at: \(fileURL.path)")
+                        } else {
+                            print("Failed to save video to Photos: \(error?.localizedDescription ?? "Unknown error")")
+                        }
+                    })
+                } else {
+                    print("Permission to access Photos not granted.")
                 }
-                
-                // Now you can move the file or save it to the desired location
-                try fileManager.moveItem(atPath: outputPath, toPath: fileURL.path)
-                print("Video saved successfully to file system at: \(fileURL.path)")
-            } catch {
-                print("Failed to save video to file system: \(error.localizedDescription)")
             }
+        } else {
+            print("Video file does not exist at the specified path.")
         }
     }
-
+    
     // MARK: - Navigation Bar Setup
     func setupNavigationBar() {
         self.title = "Video to Boomerang"
