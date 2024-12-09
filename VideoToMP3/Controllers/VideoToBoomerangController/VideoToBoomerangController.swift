@@ -12,6 +12,7 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
     @IBOutlet weak var forReverseDirection: UIStackView!
     @IBOutlet weak var revForwardDirection: UIStackView!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var videoPlayerView: UIView!
     @IBOutlet weak var imageView: UIImageView!
@@ -56,7 +57,7 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
         applyBorderToTableView()
         setupBorderedView()
         configureTableView()
-        videoClipView.delegate = self
+        activityIndicator.isHidden = true
         
         tableView.isHidden = true
         tableView.delegate = self
@@ -105,6 +106,7 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
         tableView.layer.borderWidth = 1.0
     }
     
+    // MARK: - Thumbnail Generation 
     func generateThumbnails(from videoURL: URL, count: Int, completion: @escaping ([(UIImage, String, String)]) -> Void) {
         let asset = AVAsset(url: videoURL)
         let duration = CMTimeGetSeconds(asset.duration)
@@ -180,12 +182,19 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
             print("No video selected")
             return
         }
+        
         guard let direction = selectedDirection else {
             print("No direction selected")
             return
         }
+        
         guard let selectedFormat = gifLabel.text else {
             print("No output format selected")
+            return
+        }
+        
+        if selectedFormat != "MP4" {
+            showAlert(title: "Error", message: "Unsupported format. Only MP4 is allowed.")
             return
         }
         
@@ -194,66 +203,90 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
             print("No speed selected")
             return
         }
-                
+        
+        let speedValue = volumeSliderView.speedLevels[volumeSliderView.selectedIndex?.item ?? 0]
+        let speedMultiplier = speedValue
+        print("Speed Multiplier: \(speedMultiplier)")
+        
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        view.isUserInteractionEnabled = false
+                    
         print("Converting video in \(direction) direction with format \(selectedFormat)")
 
         let inputPath = videoURL.path
         let outputExtension = selectedFormat.lowercased()
         
-//        let uniqueFileName = "converted_video_\(Int(Date().timeIntervalSince1970)).\(outputExtension)"
-        
         let uniqueFileName = "converted_video_\(direction.rawValue)_\(Int(Date().timeIntervalSince1970)).\(outputExtension)"
 
-        
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         print("Documents Directory: \(documentsDirectory.path)")
         
         let outputPath = documentsDirectory.appendingPathComponent(uniqueFileName).path
         print("Unique file name generated: \(uniqueFileName)")
         
-        var ffmpegCommand = ""
-        print("Executing FFmpeg command: \(ffmpegCommand)")
-
-        switch direction {
-        case .forward:
-            ffmpegCommand = "-i \(inputPath) -filter_complex \"setpts=PTS-STARTPTS\""
-        case .reverse:
-            ffmpegCommand = "-i \(inputPath) -filter_complex \"reverse\""
-        case .forwardReverse:
-            ffmpegCommand = "-i \(inputPath) -filter_complex \"[0:v]split[main][rev];[rev]reverse[r];[main][r]concat=n=2:v=1[outv]\" -map [outv]"
-        case .reverseForward:
-            ffmpegCommand = "-i \(inputPath) -filter_complex \"[0:v]reverse[r];[r][0:v]concat=n=2:v=1[outv]\" -map [outv]"
-        }
-        
-        switch outputExtension {
-        case "avi":
-            ffmpegCommand += " -c:v libx264 -crf 23 -preset medium \(outputPath)"
-        case "flv":
-            ffmpegCommand += " -c:v flv -ar 44100 \(outputPath)"
-        case "gif":
-            ffmpegCommand += " -filter_complex \"fps=10,scale=320:-1:flags=lanczos\" \(outputPath)"
-
-        case "mp4":
-            ffmpegCommand += " -c:v libx264 -crf 23 -preset fast \(outputPath)"
-        case "webm":
-            ffmpegCommand += " -c:v libvpx -b:v 1M -c:a libvorbis \(outputPath)"
-        default:
-            print("Unsupported format selected")
-            return
-        }
-
-        FFmpegKit.executeAsync(ffmpegCommand) { session in
-            guard let session = session else { return }
-            if session.getReturnCode().isValueSuccess() {
-                print("Conversion complete. Saved to: \(outputPath)")
-                self.saveToFileSystem(outputPath: outputPath)
-            } else {
-                print("Conversion failed with code: \(session.getReturnCode())")
+        func generateFFmpegCommand(inputPath: String, direction: Direction, outputExtension: String, outputPath: String, speedMultiplier: Double) -> String {
+            var command = "-i \(inputPath)"
+            switch direction {
+            case .forward:
+                command += " -filter_complex \"setpts=PTS-STARTPTS\""
+            case .reverse:
+                command += " -filter_complex \"reverse\""
+            case .forwardReverse:
+                command += " -filter_complex \"[0:v]split[main][rev];[rev]reverse[r];[main][r]concat=n=2:v=1[outv]\" -map [outv]"
+            case .reverseForward:
+                command += " -filter_complex \"[0:v]reverse[r];[r][0:v]concat=n=2:v=1[outv]\" -map [outv]"
             }
+            
+            let speedFilter = "setpts=\(1.0 / speedMultiplier) * PTS"
+                    command += " -filter:v \"\(speedFilter)\""
+            
+            switch outputExtension {
+            case "avi":
+                command += " -c:v libx264 -crf 23 -preset medium \(outputPath)"
+            case "gif":
+                command += " -filter_complex \"f5ps=10,scale=320:-1:flags=lanczos\" \(outputPath)"
+            default:
+                command += " -c:v libx264 -crf 23 -preset fast \(outputPath)"
+            }
+            return command
         }
-        
 
+        let commandClosure: () -> String = {
+            return generateFFmpegCommand(inputPath: inputPath, direction: direction, outputExtension: outputExtension, outputPath: outputPath, speedMultiplier: speedMultiplier)
+        }
+
+        FFmpegKit.executeAsync(commandClosure()) { session in
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    self.view.isUserInteractionEnabled = true
+                    
+                    guard let session = session else { return }
+                    if session.getReturnCode().isValueSuccess() {
+                        print("Conversion complete. Saved to: \(outputPath)")
+                        self.saveToFileSystem(outputPath: outputPath)
+                        self.showAlert(title: "Success", message: "Conversion completed successfully!") {
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    } else {
+                        print("Conversion failed with code: \(session.getReturnCode())")
+                        self.showAlert(title: "Error", message: "Conversion failed. Please try again.")
+                    }
+                }
+            }
     }
+    
+    // MARK: - Helper Function to Show Alerts
+    func showAlert(title: String, message: String, completion: (() -> Void)? = nil) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            completion?()
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+
 
     // MARK: - Save Video to Photos
     private func saveToFileSystem(outputPath: String) {
@@ -329,8 +362,9 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
             return
         }
         
-        generateThumbnails(from: url, count: 10) { [weak self] thumbnails in
+        generateThumbnails(from: url, count: 50) { [weak self] thumbnails in
             self?.videoClipView.updateVideoClips(thumbnails)
+            print("Thumbnails count: \(thumbnails.count)")
         }
         
         playerLayer?.removeFromSuperlayer()
@@ -347,6 +381,7 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
         videoPlayerView.bringSubviewToFront(playButton)
         imageView.isHidden = true
         playButton.isHidden = false
+        
     }
 
     @IBAction func playButtonTapped(_ sender: UIButton) {

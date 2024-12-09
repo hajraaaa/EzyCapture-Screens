@@ -1,4 +1,5 @@
 import UIKit
+import AVFoundation
 
 protocol VideoClipCollectionViewDelegate: AnyObject {
     func didSelectClip(startTime: String, endTime: String)
@@ -13,8 +14,11 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
     
     
     weak var delegate: VideoClipCollectionViewDelegate?
+    
     var startTime: String = ""
     var endTime: String = ""
+    
+//    var videoDuration: CGFloat = 0
     
     private var topBorderView: UIView!
     private var bottomBorderView: UIView!
@@ -66,9 +70,7 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
     }
 
     private func setupHighlightView() {
-        
         updateHighlightViewFrame()
-     
     }
     
     private func updateHighlightViewFrame() {
@@ -109,11 +111,11 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
             bottomBorderView.frame = CGRect(x: leftHandleX, y: highlightView.frame.origin.y + highlightView.frame.height - borderHeight, width: rightHandleX - leftHandleX, height: borderHeight)
         }
 
-        private func createBorderView() -> UIView {
-            let borderView = UIView()
-            borderView.backgroundColor = #colorLiteral(red: 0.9876030087, green: 0.4110053778, blue: 0.4099617898, alpha: 1)
-            return borderView
-        }
+    private func createBorderView() -> UIView {
+        let borderView = UIView()
+        borderView.backgroundColor = #colorLiteral(red: 0.9876030087, green: 0.4110053778, blue: 0.4099617898, alpha: 1)
+        return borderView
+    }
     
     
     private func setupTapGesture() {
@@ -175,7 +177,12 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
         self.videoClips = clips
         collectionView.reloadData()
     }
+    
+//    func setVideoDuration(_ duration: CGFloat) {
+//        self.videoDuration = duration
+//    }
 
+    
     private func updateStartTime() {
         let calculatedStartTime = calculateTime(fromXPosition: startTimeButton.frame.origin.x)
            startTime = calculatedStartTime
@@ -193,10 +200,11 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
     private func calculateTime(fromXPosition xPosition: CGFloat) -> String {
         
         let totalVideoWidth: CGFloat = self.frame.width
-            let totalDuration: CGFloat = 300
-
-            let timeInSeconds = Int(xPosition / totalVideoWidth * totalDuration)
-            return String(format: "%02d:%02d", timeInSeconds / 60, timeInSeconds % 60)
+        let totalDuration: CGFloat = 300
+               
+        let timeInSeconds = Int(xPosition / totalVideoWidth * totalDuration)
+        
+        return String(format: "%02d:%02d", timeInSeconds / 60, timeInSeconds % 60)
     }
     
     // MARK: - UICollectionViewDataSource Methods
