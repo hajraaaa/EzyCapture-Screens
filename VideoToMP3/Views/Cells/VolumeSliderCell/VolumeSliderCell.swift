@@ -13,7 +13,7 @@ class VolumeSliderCell: UICollectionViewCell {
         volumeLabel.text = "\(volumeLevel)"
         updateCellAppearance()
     }
-    
+
     
     private func updateCellAppearance() {
         if isSelected {

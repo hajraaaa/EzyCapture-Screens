@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoToBoomerangController" customModule="VideoToMP3" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="9t5-DF-eSw" id="Mgg-xw-9fA"/>
                 <outlet property="borderedView" destination="30r-PS-fbz" id="wQc-Pr-gLU"/>
                 <outlet property="endTime" destination="oZd-WB-oiA" id="cdS-4a-icW"/>
                 <outlet property="endTimeView" destination="6e7-b3-j7i" id="WHy-vn-eVe"/>
@@ -54,7 +55,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vvJ-Ot-RAz">
-                            <rect key="frame" x="14" y="10" width="365" height="827"/>
+                            <rect key="frame" x="14" y="10" width="365" height="867"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="00u-MY-6qJ">
                                     <rect key="frame" x="0.0" y="0.0" width="365" height="228"/>
@@ -332,8 +333,16 @@
                                         </view>
                                     </subviews>
                                 </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jPi-pn-1EH">
+                                    <rect key="frame" x="0.0" y="696" width="365" height="20"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="9t5-DF-eSw">
+                                            <rect key="frame" x="0.0" y="0.0" width="365" height="20"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CI1-En-R3k">
-                                    <rect key="frame" x="0.0" y="696" width="365" height="61"/>
+                                    <rect key="frame" x="0.0" y="736" width="365" height="61"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tle-Vt-7QB">
                                             <rect key="frame" x="111" y="0.0" width="143" height="61"/>
@@ -346,11 +355,12 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gVw-If-64e">
-                                    <rect key="frame" x="0.0" y="777" width="365" height="50"/>
+                                    <rect key="frame" x="0.0" y="817" width="365" height="50"/>
                                 </stackView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="jPi-pn-1EH" firstAttribute="top" secondItem="a3h-4b-W0P" secondAttribute="bottom" constant="20" id="3F0-gk-pa8"/>
                                 <constraint firstItem="00u-MY-6qJ" firstAttribute="top" secondItem="vvJ-Ot-RAz" secondAttribute="top" id="3vu-yP-8bI"/>
                                 <constraint firstItem="00u-MY-6qJ" firstAttribute="leading" secondItem="vvJ-Ot-RAz" secondAttribute="leading" id="59g-Rc-3mM"/>
                                 <constraint firstAttribute="trailing" secondItem="ErT-nq-R9R" secondAttribute="trailing" id="8PV-H6-BCe"/>
@@ -417,7 +427,7 @@
             <color red="0.24313725490196078" green="0.29019607843137257" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
