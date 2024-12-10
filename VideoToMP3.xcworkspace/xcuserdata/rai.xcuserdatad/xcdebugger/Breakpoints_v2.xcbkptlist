@@ -14,8 +14,8 @@
             filePath = "VideoToMP3/Controllers/VideoToBoomerangController/VideoToBoomerangController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
             landmarkName = "generateFFmpegCommand(inputPath:direction:outputExtension:outputPath:speedMultiplier:startTime:endTime:)"
             landmarkType = "9">
          </BreakpointContent>

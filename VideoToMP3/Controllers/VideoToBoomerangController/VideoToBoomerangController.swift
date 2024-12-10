@@ -64,10 +64,16 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
         tableView.dataSource = self
         
         
-        forwardDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
-        reverseDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
-        forReverseDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
-        revForwardDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
+//        forwardDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
+//        reverseDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
+//        forReverseDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
+//        revForwardDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
+        
+        let directions = [forwardDirection, reverseDirection, forReverseDirection, revForwardDirection]
+                directions.forEach { view in
+                    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:)))
+                    view?.addGestureRecognizer(tapGesture)
+                }
     }
     
     enum Direction: String {
@@ -79,19 +85,68 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
 
 
     // MARK: - Direction Handling
-       @objc func handleDirectionTap(_ sender: UITapGestureRecognizer) {
-           if sender.view == forwardDirection {
-               selectedDirection = .forward
-           } else if sender.view == reverseDirection {
-               selectedDirection = .reverse
-           } else if sender.view == forReverseDirection {
-               selectedDirection = .forwardReverse
-           } else if sender.view == revForwardDirection {
-               selectedDirection = .reverseForward
-           }
-           print("Selected Direction: \(selectedDirection!)")
-       }
+    @objc func handleDirectionTap(_ sender: UITapGestureRecognizer) {
+        
+        let directionViews = [forwardDirection, reverseDirection, forReverseDirection, revForwardDirection]
+        
+        // Reset all stack views' images and labels to default color
+                directionViews.forEach { view in
+                    resetStackViewColor(in: view)
+                }
+        
+        //           if sender.view == forwardDirection {
+        //               selectedDirection = .forward
+        //           } else if sender.view == reverseDirection {
+        //               selectedDirection = .reverse
+        //           } else if sender.view == forReverseDirection {
+        //               selectedDirection = .forwardReverse
+        //           } else if sender.view == revForwardDirection {
+        //               selectedDirection = .reverseForward
+        //           }
+        //           print("Selected Direction: \(selectedDirection!)")
+        //       }
+        
+        if let selectedView = sender.view {
+            if selectedView == forwardDirection {
+                selectedDirection = .forward
+            } else if selectedView == reverseDirection {
+                selectedDirection = .reverse
+            } else if selectedView == forReverseDirection {
+                selectedDirection = .forwardReverse
+            } else if selectedView == revForwardDirection {
+                selectedDirection = .reverseForward
+            }
+            
+            updateStackViewColor(in: selectedView, imageColor: UIColor(named: "direction")!, labelColor: UIColor(named: "direction")!)
+        }
+        
+        print("Selected Direction: \(selectedDirection!)")
+    }
     
+    // MARK: - Helper Methods
+        private func resetStackViewColor(in view: UIView?) {
+            guard let stackView = view?.subviews.first(where: { $0 is UIStackView }) as? UIStackView else { return }
+            
+            stackView.arrangedSubviews.forEach { subview in
+                if let imageView = subview as? UIImageView {
+                    imageView.tintColor = UIColor(named: "border")
+                } else if let label = subview as? UILabel {
+                    label.textColor = UIColor(named: "bottomText")
+                }
+            }
+        }
+        
+        private func updateStackViewColor(in view: UIView?, imageColor: UIColor, labelColor: UIColor) {
+            guard let stackView = view?.subviews.first(where: { $0 is UIStackView }) as? UIStackView else { return }
+            
+            stackView.arrangedSubviews.forEach { subview in
+                if let imageView = subview as? UIImageView {
+                    imageView.tintColor = imageColor
+                } else if let label = subview as? UILabel {
+                    label.textColor = labelColor
+                }
+            }
+        }
     
     func styleView(_ view: UIView) {
             view.layer.cornerRadius = 8
