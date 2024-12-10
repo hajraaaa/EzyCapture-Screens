@@ -3,11 +3,11 @@ import UIKit
 class VolumeSliderCell: UICollectionViewCell {
     @IBOutlet weak var volumeLabel: UILabel!
     
-    override var isSelected: Bool {
-        didSet {
-            updateCellAppearance()
-        }
-    }
+//    override var isSelected: Bool {
+//        didSet {
+//            updateCellAppearance()
+//        }
+//    }
     
     func config(volumeLevel: Int) {
         volumeLabel.text = "\(volumeLevel)"

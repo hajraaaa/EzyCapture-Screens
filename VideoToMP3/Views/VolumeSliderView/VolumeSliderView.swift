@@ -72,19 +72,16 @@ class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDele
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VolumeSliderCell", for: indexPath) as! VolumeSliderCell
+        cell.isSelected = (indexPath == selectedIndex)
         
         switch sliderType {
         case .volume:
             cell.config(volumeLevel: volumeLevels[indexPath.item])
             
         case .speed:
-//            cell.config(volumeLevel: Int(Double(speedLevels[indexPath.item])))
             let speedValue = speedLevels[indexPath.item]
             cell.config(volumeLevel: Int(speedValue * 10))
         }
-        
-        cell.isSelected = (indexPath == selectedIndex)
-        
         return cell
     }
 
@@ -110,7 +107,6 @@ class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDele
             let selectedItemWidth = cellFrame.origin.x + cellFrame.size.width / 2
             let lineWidth = selectedItemWidth
             
-           
                 UIView.animate(withDuration: 0.3, animations: {
                     self.lineView.frame.origin.x = 0
                     self.lineView.frame.size.width = lineWidth
