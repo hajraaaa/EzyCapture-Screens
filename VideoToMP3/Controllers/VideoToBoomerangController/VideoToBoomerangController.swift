@@ -228,30 +228,47 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
         print("Unique file name generated: \(uniqueFileName)")
         
         
-        func generateFFmpegCommand(inputPath: String, direction: Direction, outputExtension: String, outputPath: String, speedMultiplier: Double) -> String {
+        func generateFFmpegCommand(
+            inputPath: String,
+            direction: Direction,
+            outputExtension: String,
+            outputPath: String,
+            speedMultiplier: Double,
+            startTime: String,
+            endTime: String
+        ) -> String {
             var command = "-i \(inputPath)"
-            var filterComplex = ""
             
+            command = "-ss \(startTime) -to \(endTime) " + command
+            
+            var filterComplex = ""
+
             switch direction {
             case .forward:
-                filterComplex = "\"setpts=\(1.0 / speedMultiplier)*PTS\""
+                filterComplex = "setpts=\(1.0 / speedMultiplier)*PTS"
+
             case .reverse:
-                filterComplex = "\"reverse,setpts=\(1.0 / speedMultiplier)*PTS\""
+                filterComplex = "reverse,setpts=\(1.0 / speedMultiplier)*PTS"
+
             case .forwardReverse:
                 filterComplex = """
-                \"[0:v]split[main][rev];[rev]reverse[r];[main]setpts=\(1.0 / speedMultiplier)*PTS[main_speed];\
-                [r]setpts=\(1.0 / speedMultiplier)*PTS[r_speed];[main_speed][r_speed]concat=n=2:v=1[outv]\"
-                -map [outv]
+                [0:v]split[main][rev];\
+                [rev]reverse[r];\
+                [main]setpts=\(1.0 / speedMultiplier)*PTS[main_speed];\
+                [r]setpts=\(1.0 / speedMultiplier)*PTS[r_speed];\
+                [main_speed][r_speed]concat=n=2:v=1[outv]
                 """
+                command += " -filter_complex \"\(filterComplex)\" -map [outv]"
+
             case .reverseForward:
                 filterComplex = """
-                \"[0:v]reverse[r];[r]setpts=\(1.0 / speedMultiplier)*PTS[r_speed];\
-                [0:v]setpts=\(1.0 / speedMultiplier)*PTS[main_speed];[r_speed][main_speed]concat=n=2:v=1[outv]\"
-                -map [outv]
+                [0:v]reverse[r];\
+                [r]setpts=\(1.0 / speedMultiplier)*PTS[r_speed];\
+                [0:v]setpts=\(1.0 / speedMultiplier)*PTS[main_speed];\
+                [r_speed][main_speed]concat=n=2:v=1[outv]
                 """
+                command += " -filter_complex \"\(filterComplex)\" -map [outv]"
             }
-            
-            command += " -filter_complex \(filterComplex)"
             
             switch outputExtension {
             case "avi":
@@ -265,8 +282,19 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
             return command
         }
         
+        let startTime = self.startTime.text ?? "0:00"
+        let endTime = self.endTime.text ?? ""
+        
         let commandClosure: () -> String = {
-            return generateFFmpegCommand(inputPath: inputPath, direction: direction, outputExtension: outputExtension, outputPath: outputPath, speedMultiplier: speedMultiplier)
+            return generateFFmpegCommand(
+                inputPath: inputPath,
+                direction: direction,
+                outputExtension: outputExtension,
+                outputPath: outputPath,
+                speedMultiplier: speedMultiplier,
+                startTime: startTime,
+                endTime: endTime
+            )
         }
 
         FFmpegKit.executeAsync(commandClosure()) { session in
