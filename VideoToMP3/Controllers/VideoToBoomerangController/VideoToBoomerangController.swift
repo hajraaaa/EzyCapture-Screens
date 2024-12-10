@@ -245,17 +245,17 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
 
             switch direction {
             case .forward:
-                filterComplex = "setpts=\(1.0 / speedMultiplier)*PTS"
+                filterComplex = "setpts=\( speedMultiplier)*PTS"
 
             case .reverse:
-                filterComplex = "reverse,setpts=\(1.0 / speedMultiplier)*PTS"
+                filterComplex = "reverse,setpts=\( speedMultiplier)*PTS"
 
             case .forwardReverse:
                 filterComplex = """
                 [0:v]split[main][rev];\
                 [rev]reverse[r];\
-                [main]setpts=\(1.0 / speedMultiplier)*PTS[main_speed];\
-                [r]setpts=\(1.0 / speedMultiplier)*PTS[r_speed];\
+                [main]setpts=\( speedMultiplier)*PTS[main_speed];\
+                [r]setpts=\( speedMultiplier)*PTS[r_speed];\
                 [main_speed][r_speed]concat=n=2:v=1[outv]
                 """
                 command += " -filter_complex \"\(filterComplex)\" -map [outv]"
@@ -263,8 +263,8 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
             case .reverseForward:
                 filterComplex = """
                 [0:v]reverse[r];\
-                [r]setpts=\(1.0 / speedMultiplier)*PTS[r_speed];\
-                [0:v]setpts=\(1.0 / speedMultiplier)*PTS[main_speed];\
+                [r]setpts=\( speedMultiplier)*PTS[r_speed];\
+                [0:v]setpts=\(speedMultiplier)*PTS[main_speed];\
                 [r_speed][main_speed]concat=n=2:v=1[outv]
                 """
                 command += " -filter_complex \"\(filterComplex)\" -map [outv]"
@@ -410,7 +410,7 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
                return
            }
    
-           generateThumbnails(from: url, count: 50) { [weak self] thumbnails in
+           generateThumbnails(from: url, count: 20) { [weak self] thumbnails in
               self?.videoClipView.updateVideoClips(thumbnails)
                print("Thumbnails count: \(thumbnails.count)")
            }
