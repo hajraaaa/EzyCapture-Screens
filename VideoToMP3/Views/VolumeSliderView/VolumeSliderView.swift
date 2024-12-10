@@ -17,7 +17,7 @@ class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDele
     
     let volumeLevels = Array(stride(from: 0, through: 100, by: 10))
     
-    let speedLevels: [Double] = Array(stride(from: 0.5, through: 2.0, by: 0.1))
+    let speedLevels: [Double] = Array(stride(from: 1.1, through: 0.1, by: -0.1))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,6 +76,7 @@ class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDele
         switch sliderType {
         case .volume:
             cell.config(volumeLevel: volumeLevels[indexPath.item])
+            
         case .speed:
 //            cell.config(volumeLevel: Int(Double(speedLevels[indexPath.item])))
             let speedValue = speedLevels[indexPath.item]
@@ -93,10 +94,13 @@ class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDele
         if selectedIndex != indexPath {
             selectedIndex = indexPath
             collectionView.reloadData()
-            updateLineViewPosition(for: indexPath)
+            
+            DispatchQueue.main.async{
+                self.updateLineViewPosition(for: indexPath)
+            }
         }
     }
-
+    
     // MARK: - Line View Positioning
     private func updateLineViewPosition(for indexPath: IndexPath) {
         self.lineView.frame.size.height = 5
@@ -106,16 +110,18 @@ class VolumeSliderView: UIView, UICollectionViewDataSource, UICollectionViewDele
             let selectedItemWidth = cellFrame.origin.x + cellFrame.size.width / 2
             let lineWidth = selectedItemWidth
             
-            UIView.animate(withDuration: 0.3, animations: {
-                self.lineView.frame.origin.x = 0
-                self.lineView.frame.size.width = lineWidth
-
-                self.lineView.addLinearGradient(
-                    colors: [UIColor.gradientColor1, UIColor.gradientColor2],
-                    startPoint: CGPoint(x: 0, y: 0),
-                    endPoint: CGPoint(x: 1, y: 0)
-                )
-            })
+           
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.lineView.frame.origin.x = 0
+                    self.lineView.frame.size.width = lineWidth
+                    
+                    self.lineView.addLinearGradient(
+                        colors: [UIColor.gradientColor1, UIColor.gradientColor2],
+                        startPoint: CGPoint(x: 0, y: 0),
+                        endPoint: CGPoint(x: 1, y: 0)
+                    )
+                })
+            
         }
     }
 }

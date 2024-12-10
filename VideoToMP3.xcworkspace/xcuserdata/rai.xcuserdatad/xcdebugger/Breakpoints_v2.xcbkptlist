@@ -3,4 +3,22 @@
    uuid = "1F3F5491-2D75-4DE6-BF12-37097FE4548C"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F24D74A4-BA58-44CB-978C-1437D69DC4A6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VideoToMP3/Controllers/VideoToBoomerangController/VideoToBoomerangController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
+            landmarkName = "generateFFmpegCommand(inputPath:direction:outputExtension:outputPath:speedMultiplier:startTime:endTime:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
