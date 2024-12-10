@@ -18,7 +18,7 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
     var startTime: String = ""
     var endTime: String = ""
     
-//    var videoDuration: CGFloat = 0
+    var videoDuration: CGFloat = 0
     
     private var topBorderView: UIView!
     private var bottomBorderView: UIView!
@@ -178,9 +178,9 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
         collectionView.reloadData()
     }
     
-//    func setVideoDuration(_ duration: CGFloat) {
-//        self.videoDuration = duration
-//    }
+    func setVideoDuration(_ duration: CGFloat) {
+        self.videoDuration = duration
+    }
 
     
     private func updateStartTime() {
@@ -200,9 +200,8 @@ class VideoClipCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
     private func calculateTime(fromXPosition xPosition: CGFloat) -> String {
         
         let totalVideoWidth: CGFloat = self.frame.width
-        let totalDuration: CGFloat = 300
-               
-        let timeInSeconds = Int(xPosition / totalVideoWidth * totalDuration)
+        
+        let timeInSeconds = Int((xPosition / totalVideoWidth) * videoDuration)
         
         return String(format: "%02d:%02d", timeInSeconds / 60, timeInSeconds % 60)
     }

@@ -110,6 +110,8 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
     func generateThumbnails(from videoURL: URL, count: Int, completion: @escaping ([(UIImage, String, String)]) -> Void) {
         let asset = AVAsset(url: videoURL)
         let duration = CMTimeGetSeconds(asset.duration)
+        self.videoClipView.setVideoDuration(CGFloat(duration))
+        print("video duration: \(duration)")
         let interval = duration / Double(count)
         let generator = AVAssetImageGenerator(asset: asset)
         generator.appliesPreferredTrackTransform = true
@@ -225,33 +227,44 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
         let outputPath = documentsDirectory.appendingPathComponent(uniqueFileName).path
         print("Unique file name generated: \(uniqueFileName)")
         
+        
         func generateFFmpegCommand(inputPath: String, direction: Direction, outputExtension: String, outputPath: String, speedMultiplier: Double) -> String {
             var command = "-i \(inputPath)"
+            var filterComplex = ""
+            
             switch direction {
             case .forward:
-                command += " -filter_complex \"setpts=PTS-STARTPTS\""
+                filterComplex = "\"setpts=\(1.0 / speedMultiplier)*PTS\""
             case .reverse:
-                command += " -filter_complex \"reverse\""
+                filterComplex = "\"reverse,setpts=\(1.0 / speedMultiplier)*PTS\""
             case .forwardReverse:
-                command += " -filter_complex \"[0:v]split[main][rev];[rev]reverse[r];[main][r]concat=n=2:v=1[outv]\" -map [outv]"
+                filterComplex = """
+                \"[0:v]split[main][rev];[rev]reverse[r];[main]setpts=\(1.0 / speedMultiplier)*PTS[main_speed];\
+                [r]setpts=\(1.0 / speedMultiplier)*PTS[r_speed];[main_speed][r_speed]concat=n=2:v=1[outv]\"
+                -map [outv]
+                """
             case .reverseForward:
-                command += " -filter_complex \"[0:v]reverse[r];[r][0:v]concat=n=2:v=1[outv]\" -map [outv]"
+                filterComplex = """
+                \"[0:v]reverse[r];[r]setpts=\(1.0 / speedMultiplier)*PTS[r_speed];\
+                [0:v]setpts=\(1.0 / speedMultiplier)*PTS[main_speed];[r_speed][main_speed]concat=n=2:v=1[outv]\"
+                -map [outv]
+                """
             }
             
-            let speedFilter = "setpts=\(1.0 / speedMultiplier) * PTS"
-                    command += " -filter:v \"\(speedFilter)\""
+            command += " -filter_complex \(filterComplex)"
             
             switch outputExtension {
             case "avi":
                 command += " -c:v libx264 -crf 23 -preset medium \(outputPath)"
             case "gif":
-                command += " -filter_complex \"f5ps=10,scale=320:-1:flags=lanczos\" \(outputPath)"
+                command += " -filter_complex \"fps=10,scale=320:-1:flags=lanczos\" \(outputPath)"
             default:
                 command += " -c:v libx264 -crf 23 -preset fast \(outputPath)"
             }
+            
             return command
         }
-
+        
         let commandClosure: () -> String = {
             return generateFFmpegCommand(inputPath: inputPath, direction: direction, outputExtension: outputExtension, outputPath: outputPath, speedMultiplier: speedMultiplier)
         }
@@ -357,32 +370,40 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
     
     // MARK: - Video Playback
     private func displaySelectedVideo() {
-        guard let url = selectedVideoURL else {
-            print("No video URL passed")
-            return
-        }
-        
-        generateThumbnails(from: url, count: 50) { [weak self] thumbnails in
-            self?.videoClipView.updateVideoClips(thumbnails)
-            print("Thumbnails count: \(thumbnails.count)")
-        }
-        
-        playerLayer?.removeFromSuperlayer()
-        playerLayer = nil
-        
-        player = AVPlayer(url: url)
-        playerLayer = AVPlayerLayer(player: player)
-        playerLayer?.frame = videoPlayerView.bounds
-        playerLayer?.videoGravity = .resizeAspectFill
-        
-        if let playerLayer = playerLayer {
-            videoPlayerView.layer.addSublayer(playerLayer)
-        }
-        videoPlayerView.bringSubviewToFront(playButton)
-        imageView.isHidden = true
-        playButton.isHidden = false
-        
-    }
+           guard let url = selectedVideoURL else {
+               print("No video URL passed")
+               return
+           }
+   
+           player = AVPlayer(url: url)
+   
+           guard let duration = player?.currentItem?.duration.seconds else {
+               print("Error: Unable to retrieve video duration.")
+               return
+           }
+   
+           generateThumbnails(from: url, count: 50) { [weak self] thumbnails in
+              self?.videoClipView.updateVideoClips(thumbnails)
+               print("Thumbnails count: \(thumbnails.count)")
+           }
+   
+           playerLayer?.removeFromSuperlayer()
+           playerLayer = nil
+   
+           playerLayer = AVPlayerLayer(player: player)
+           playerLayer?.frame = videoPlayerView.bounds
+           playerLayer?.videoGravity = .resizeAspectFill
+   
+           if let playerLayer = playerLayer {
+               videoPlayerView.layer.addSublayer(playerLayer)
+           }
+   
+           videoPlayerView.bringSubviewToFront(playButton)
+   
+           imageView.isHidden = true
+           playButton.isHidden = false
+       }
+    
 
     @IBAction func playButtonTapped(_ sender: UIButton) {
         guard let player = player else {
