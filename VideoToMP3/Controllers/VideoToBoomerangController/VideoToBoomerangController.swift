@@ -321,17 +321,33 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
 
             switch direction {
             case .forward:
+//                filterComplex = """
+//                    [0:v]setpts=\(speedMultiplier)*PTS[outv]
+//                    """
+//                    command += " -filter_complex \"\(filterComplex)\" -map [outv]"
+                filterComplex = """
+                   [0:v]reverse[r];\
+                   [r]setpts=\(speedMultiplier)*PTS[outv]
+                   """
+                   command += " -filter_complex \"\(filterComplex)\" -map [outv]"
+
+            case .reverse:
                 filterComplex = """
                     [0:v]setpts=\(speedMultiplier)*PTS[outv]
                     """
                     command += " -filter_complex \"\(filterComplex)\" -map [outv]"
-
-            case .reverse:
-                filterComplex = """
-                    [0:v]reverse[r];\
-                    [r]setpts=\(speedMultiplier)*PTS[outv]
-                    """
-                    command += " -filter_complex \"\(filterComplex)\" -map [outv]"
+                
+//                    filterComplex = """
+//                        [0:v]reverse[r];\
+//                        [r]setpts=PTS[outv]
+//                        """
+//                    command += " -filter_complex \"\(filterComplex)\" -map [outv] -af areverse"
+//                
+//                filterComplex = """
+//                    [0:v]reverse[r];\
+//                    [r]setpts=\(speedMultiplier)*PTS[outv]
+//                    """
+//                    command += " -filter_complex \"\(filterComplex)\" -map [outv]"
                 
 //                filterComplex = "reverse,setpts=\( speedMultiplier)*PTS"
 //                command += " -filter_complex \"\(filterComplex)\" -map [outv]"
