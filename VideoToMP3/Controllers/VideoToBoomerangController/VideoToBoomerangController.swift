@@ -12,6 +12,8 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
     @IBOutlet weak var forReverseDirection: UIStackView!
     @IBOutlet weak var revForwardDirection: UIStackView!
     
+    @IBOutlet weak var mainDirection: UIStackView!
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var videoPlayerView: UIView!
@@ -51,29 +53,33 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
         setupNavigationBar()
         displaySelectedVideo()
         configureGIFDropdown()
-        videoClipView.delegate = self
+        styleTimeViews()
+        applyTableViewConfigurations()
+        setupDirectionGestures()
+}
+    
+    // MARK: - Setup Methods
+    private func styleTimeViews() {
         styleView(startTimeView)
         styleView(endTimeView)
-        applyBorderToTableView()
-        setupBorderedView()
-        configureTableView()
+    }
+
+    private func applyTableViewConfigurations() {
+        videoClipView.delegate = self
         activityIndicator.isHidden = true
-        
         tableView.isHidden = true
         tableView.delegate = self
         tableView.dataSource = self
-        
-        
-//        forwardDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
-//        reverseDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
-//        forReverseDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
-//        revForwardDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
-        
-        let directions = [forwardDirection, reverseDirection, forReverseDirection, revForwardDirection]
-                directions.forEach { view in
-                    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:)))
-                    view?.addGestureRecognizer(tapGesture)
-                }
+        applyBorderToTableView()
+        setupBorderedView()
+        configureTableView()
+    }
+
+    private func setupDirectionGestures() {
+        forwardDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
+        reverseDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
+        forReverseDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
+        revForwardDirection.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDirectionTap(_:))))
     }
     
     enum Direction: String {
@@ -81,72 +87,87 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
         case reverse = "reverse"
         case forwardReverse = "forward_reverse"
         case reverseForward = "reverse_forward"
+        
     }
 
 
     // MARK: - Direction Handling
     @objc func handleDirectionTap(_ sender: UITapGestureRecognizer) {
-        
-        let directionViews = [forwardDirection, reverseDirection, forReverseDirection, revForwardDirection]
-        
-        // Reset all stack views' images and labels to default color
-                directionViews.forEach { view in
-                    resetStackViewColor(in: view)
-                }
-        
-        //           if sender.view == forwardDirection {
-        //               selectedDirection = .forward
-        //           } else if sender.view == reverseDirection {
-        //               selectedDirection = .reverse
-        //           } else if sender.view == forReverseDirection {
-        //               selectedDirection = .forwardReverse
-        //           } else if sender.view == revForwardDirection {
-        //               selectedDirection = .reverseForward
-        //           }
-        //           print("Selected Direction: \(selectedDirection!)")
-        //       }
-        
         if let selectedView = sender.view {
+            resetStackViewColors()
+
             if selectedView == forwardDirection {
                 selectedDirection = .forward
+                print("Forward direction selected")
             } else if selectedView == reverseDirection {
                 selectedDirection = .reverse
+                print("Reverse direction selected")
             } else if selectedView == forReverseDirection {
                 selectedDirection = .forwardReverse
+                print("Forward-Reverse direction selected")
             } else if selectedView == revForwardDirection {
                 selectedDirection = .reverseForward
+                print("Reverse-Forward direction selected")
+            } else {
+                selectedDirection = nil
+                print("No direction selected")
             }
-            
-            updateStackViewColor(in: selectedView, imageColor: UIColor(named: "direction")!, labelColor: UIColor(named: "direction")!)
+
+            if let stackView = selectedView as? UIStackView {
+                updateStackViewColor(stackView: stackView, imageColor: UIColor(named: "direction")!, labelColor: UIColor(named: "direction")!)
+            }
         }
-        
-        print("Selected Direction: \(selectedDirection!)")
     }
     
-    // MARK: - Helper Methods
-        private func resetStackViewColor(in view: UIView?) {
-            guard let stackView = view?.subviews.first(where: { $0 is UIStackView }) as? UIStackView else { return }
-            
-            stackView.arrangedSubviews.forEach { subview in
-                if let imageView = subview as? UIImageView {
-                    imageView.tintColor = UIColor(named: "border")
-                } else if let label = subview as? UILabel {
-                    label.textColor = UIColor(named: "bottomText")
-                }
+    private func resetStackViewColors() {
+        for subview in mainDirection.subviews {
+            if let stackView = subview as? UIStackView {
+                resetStackViewColor(stackView: stackView)
             }
         }
-        
-        private func updateStackViewColor(in view: UIView?, imageColor: UIColor, labelColor: UIColor) {
-            guard let stackView = view?.subviews.first(where: { $0 is UIStackView }) as? UIStackView else { return }
-            
-            stackView.arrangedSubviews.forEach { subview in
+    }
+
+    private func resetStackViewColor(stackView: UIStackView) {
+        stackView.arrangedSubviews.forEach { subview in
+            if let imageView = subview as? UIImageView {
+                switch stackView {
+                case forwardDirection:
+                    imageView.image = UIImage(named: "Group 85145")
+                case reverseDirection:
+                    imageView.image = UIImage(named: "Group 85146")
+                case forReverseDirection:
+                    imageView.image = UIImage(named: "Group 85150")
+                case revForwardDirection:
+                    imageView.image = UIImage(named: "Group 85151")
+                default:
+                    break
+                }
+            } else if let label = subview as? UILabel {
+                label.textColor = UIColor(named: "bottomText")
+            }
+        }
+    }
+
+    private func updateStackViewColor(stackView: UIStackView, imageColor: UIColor, labelColor: UIColor) {
+        stackView.arrangedSubviews.forEach { subview in
                 if let imageView = subview as? UIImageView {
-                    imageView.tintColor = imageColor
+                    switch selectedDirection {
+                    case .forward:
+                        imageView.image = UIImage(named: "selectedforward")
+                    case .reverse:
+                        imageView.image = UIImage(named: "selectedreverse")
+                    case .forwardReverse:
+                        imageView.image = UIImage(named: "selectedforwardrev")
+                    case .reverseForward:
+                        imageView.image = UIImage(named: "selectedreversefor")
+                    case .none:
+                        imageView.image = UIImage(named: "defaultImage")
+                    }
                 } else if let label = subview as? UILabel {
                     label.textColor = labelColor
                 }
             }
-        }
+    }
     
     func styleView(_ view: UIView) {
             view.layer.cornerRadius = 8
@@ -300,12 +321,32 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
 
             switch direction {
             case .forward:
-                filterComplex = "setpts=\( speedMultiplier)*PTS"
+                filterComplex = """
+                    [0:v]setpts=\(speedMultiplier)*PTS[outv]
+                    """
+                    command += " -filter_complex \"\(filterComplex)\" -map [outv]"
 
             case .reverse:
-                filterComplex = "reverse,setpts=\( speedMultiplier)*PTS"
+                filterComplex = """
+                    [0:v]reverse[r];\
+                    [r]setpts=\(speedMultiplier)*PTS[outv]
+                    """
+                    command += " -filter_complex \"\(filterComplex)\" -map [outv]"
+                
+//                filterComplex = "reverse,setpts=\( speedMultiplier)*PTS"
+//                command += " -filter_complex \"\(filterComplex)\" -map [outv]"
 
             case .forwardReverse:
+                filterComplex = """
+                [0:v]reverse[r];\
+                [r]setpts=\( speedMultiplier)*PTS[r_speed];\
+                [0:v]setpts=\(speedMultiplier)*PTS[main_speed];\
+                [r_speed][main_speed]concat=n=2:v=1[outv]
+                """
+                command += " -filter_complex \"\(filterComplex)\" -map [outv]"
+                
+
+            case .reverseForward:
                 filterComplex = """
                 [0:v]split[main][rev];\
                 [rev]reverse[r];\
@@ -314,15 +355,7 @@ class VideoToBoomerangController: UIViewController, VideoClipCollectionViewDeleg
                 [main_speed][r_speed]concat=n=2:v=1[outv]
                 """
                 command += " -filter_complex \"\(filterComplex)\" -map [outv]"
-
-            case .reverseForward:
-                filterComplex = """
-                [0:v]reverse[r];\
-                [r]setpts=\( speedMultiplier)*PTS[r_speed];\
-                [0:v]setpts=\(speedMultiplier)*PTS[main_speed];\
-                [r_speed][main_speed]concat=n=2:v=1[outv]
-                """
-                command += " -filter_complex \"\(filterComplex)\" -map [outv]"
+                
             }
             
             switch outputExtension {
