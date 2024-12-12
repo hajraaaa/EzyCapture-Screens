@@ -147,6 +147,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		312E218A2D0ABC9B0096B4EC /* VideoClipCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				31002B352CF8206C0029CA00 /* VideoClipCollectionView.swift */,
+				31002B312CF820280029CA00 /* VideoClipCollectionView.xib */,
+			);
+			path = VideoClipCollectionView;
+			sourceTree = "<group>";
+		};
+		312E218B2D0ABCC90096B4EC /* VideoClipCell */ = {
+			isa = PBXGroup;
+			children = (
+				31002B382CF820EF0029CA00 /* VideoClipCell.xib */,
+				31002B372CF820EF0029CA00 /* VideoClipCell.swift */,
+			);
+			path = VideoClipCell;
+			sourceTree = "<group>";
+		};
 		315E137C2CF06C8B00137500 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,10 +286,6 @@
 				31DEBA8C2CE30CDA0067361D /* Assets.xcassets */,
 				31DEBA8E2CE30CDA0067361D /* LaunchScreen.storyboard */,
 				31DEBA912CE30CDA0067361D /* Info.plist */,
-				31002B312CF820280029CA00 /* VideoClipCollectionView.xib */,
-				31002B352CF8206C0029CA00 /* VideoClipCollectionView.swift */,
-				31002B372CF820EF0029CA00 /* VideoClipCell.swift */,
-				31002B382CF820EF0029CA00 /* VideoClipCell.xib */,
 			);
 			path = VideoToMP3;
 			sourceTree = "<group>";
@@ -304,6 +318,7 @@
 		31DEBAC12CE332290067361D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				312E218A2D0ABC9B0096B4EC /* VideoClipCollectionView */,
 				31A7CDB72CECA126003B8868 /* VolumeSliderView */,
 				31DEBAC42CE332630067361D /* Cells */,
 			);
@@ -332,6 +347,7 @@
 		31DEBAC42CE332630067361D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				312E218B2D0ABCC90096B4EC /* VideoClipCell */,
 				31A7CDB62CECA0F4003B8868 /* VolumeSliderCell */,
 				31A7CDB52CECA0D5003B8868 /* VideoToMP3Cell */,
 			);

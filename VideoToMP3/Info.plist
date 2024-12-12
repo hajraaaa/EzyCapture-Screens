@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleIdentifier</key>
 	<string></string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>save videos to photos library.</string>
 	<key>UIAppFonts</key>
