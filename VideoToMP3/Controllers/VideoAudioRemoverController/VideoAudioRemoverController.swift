@@ -109,9 +109,11 @@ class VideoAudioRemoverController: UIViewController {
         view.isUserInteractionEnabled = false
         
         let timestamp = Int(Date().timeIntervalSince1970)
-        let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent("output_\(timestamp).mp4")
+        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("output_\(timestamp).mp4")
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let outputURL = documentsURL.appendingPathComponent("output_\(timestamp).mp4")
         
-        let ffmpegCommand = "-i \(inputURL.path) -an -vcodec copy \(outputURL.path)"
+        let ffmpegCommand = "-i \(inputURL.path) -an -vcodec copy \(tempURL.path)"
         
         FFmpegKit.executeAsync(ffmpegCommand) { session in
             guard let returnCode = session?.getReturnCode() else { return }
@@ -123,19 +125,25 @@ class VideoAudioRemoverController: UIViewController {
             }
             
             if returnCode.isValueSuccess() {
-                print("Audio removed successfully. Saved at \(outputURL.path)")
-                DispatchQueue.main.async {
-                    let alertController = UIAlertController(
-                        title: "Success",
-                        message: "Audio removed successfully!",
-                        preferredStyle: .alert)
+                do {
+                    try FileManager.default.moveItem(at: tempURL, to: outputURL)
+                    print("Audio removed successfully. Saved at \(outputURL.path)")
                     
-                    let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-                        self.navigationController?.popViewController(animated: true)
+                    DispatchQueue.main.async {
+                        let alertController = UIAlertController(
+                            title: "Success",
+                            message: "Audio removed successfully!",
+                            preferredStyle: .alert)
+                        
+                        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                        alertController.addAction(okAction)
+                        self.present(alertController, animated: true, completion: nil)
+                        self.playVideo(from: outputURL)
                     }
-                    alertController.addAction(okAction)
-                    self.present(alertController, animated: true, completion: nil)
-                    self.playVideo(from: outputURL)
+                } catch {
+                    print("Error moving file: \(error)")
                 }
             } else {
                 print("Error while removing audio: \(returnCode)")
