@@ -1,6 +1,7 @@
 import UIKit
 import AVKit
 import ffmpegkit
+import Photos
 
 class VideoAudioRemoverController: UIViewController {
 
@@ -126,8 +127,8 @@ class VideoAudioRemoverController: UIViewController {
             
             if returnCode.isValueSuccess() {
                 do {
-                    try FileManager.default.moveItem(at: tempURL, to: outputURL)
-                    print("Audio removed successfully. Saved at \(outputURL.path)")
+                    self.saveToPhotoLibrary(outputPath: tempURL.path)
+                    print("Audio removed successfully. Saved at \(tempURL.path)")
                     
                     DispatchQueue.main.async {
                         let alertController = UIAlertController(
@@ -148,6 +149,32 @@ class VideoAudioRemoverController: UIViewController {
             } else {
                 print("Error while removing audio: \(returnCode)")
             }
+        }
+    }
+    
+    private func saveToPhotoLibrary(outputPath: String) {
+        
+        let fileManager = FileManager.default
+        let fileURL = URL(fileURLWithPath: outputPath)
+        
+        if fileManager.fileExists(atPath: fileURL.path) {
+            PHPhotoLibrary.requestAuthorization { status in
+                if status == .authorized {
+                    PHPhotoLibrary.shared().performChanges({
+                        PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: fileURL)
+                    }, completionHandler: { success, error in
+                        if success {
+                            print("Video saved successfully to Photos album at: \(fileURL.path)")
+                        } else {
+                            print("Failed to save video to Photos: \(error?.localizedDescription ?? "Unknown error")")
+                        }
+                    })
+                } else {
+                    print("Permission to access Photos not granted.")
+                }
+            }
+        } else {
+            print("Video file does not exist at the specified path.")
         }
     }
     
