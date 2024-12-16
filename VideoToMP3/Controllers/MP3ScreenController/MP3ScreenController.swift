@@ -236,15 +236,27 @@ class MP3ScreenController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 if ReturnCode.isSuccess(returnCode) {
                     print("MP3 Conversion Successful: \(outputFilePath)")
-                    let alertController = UIAlertController(
-                        title: "Success",
-                        message: "Conversion completed successfully!",
-                        preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-                    self.navigationController?.popViewController(animated: true)
+                    
+                    let activityVC = UIActivityViewController(activityItems: [outputFilePath], applicationActivities: nil)
+                    
+                    activityVC.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
+                        if completed {
+                            let alertController = UIAlertController(
+                                title: "Success",
+                                message: "Conversion completed successfully!",
+                                preferredStyle: .alert
+                            )
+                            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                                self.navigationController?.popViewController(animated: true)
+                            }
+                            alertController.addAction(okAction)
+                            self.present(alertController, animated: true, completion: nil)
+                        } else {
+                            print("User dismissed the share sheet without saving or sharing.")
+                        }
                     }
-                    alertController.addAction(okAction)
-                    self.present(alertController, animated: true, completion: nil)
+                    
+                    self.present(activityVC, animated: true, completion: nil)
                     
                 } else {
                     print("Error during conversion: \(returnCode)")
